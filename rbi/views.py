@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from rbi.models import Empresa
 from rbi.forms import cadastroempresaForm, cadastroareaForm, cadastroequipForm, cadastrocomponenteForm, cadastropropostaForm
 from django.views import View
-from django.views.generic import  CreateView, UpdateView, DeleteView, DetailView
+from django.views.generic import  UpdateView, DeleteView, DetailView
 
 
 class Index_view(View):
@@ -10,6 +10,8 @@ class Index_view(View):
       empresas = Empresa.objects.all()
       context = {"rbi": empresas}
       return render(request, "index.html", context=context)
+   
+
   
 class Cadastroempresa_view(View):
    def get(self, request):

@@ -1,0 +1,44 @@
+
+  body{
+    display: flex;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(163, 193, 161);
+    background-size: cover;
+    background-position: 50%;
+    padding: 20px;
+  }
+  form {
+    font-family: "Arial" 3px;
+    background-color: white;
+    padding: 20px;
+    width: 220px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column; 
+  }
+  h1{
+    font-size: 24px;
+  }
+  .barra-horizontal {
+    background-color:#f87842;
+    height: 5px;
+    width: 210px;
+  }
+  .titulo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }  
+  .btn-linl {
+    padding: 8px;
+    text-decoration:none;
+    border: 3px solid black;
+    border-radius: 10px;
+    font-family: Verdana;
+    font-size: 15px;
+    background-color: rgb(119, 119, 121);
+    color:white;
+    box-shadow: 2px 2px 2px rgb(72, 72, 71)
+  }

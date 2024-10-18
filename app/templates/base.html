@@ -11,23 +11,26 @@
     <body>
         <header>
             <nav>
-                <ul>   
-                    <div class="card">
-                        <div class="card-header" style="background-color: steelblue";>
-                            API RBI - Versão Beta - By Subtil
-                
-                            {% if user.is_authenticated %}
-                                <li> Usuário: {{user}} </li>
-                            {% endif %}
+                 
 
-                            {% if not user.is_authenticated %}
-                                <li><a href="{% url 'register' %}" > Cadastre-se </a></li>
-                                <li><a href="{% url 'login' %}">Login</a></li>
-                            {% endif %}
-                               
-                        </div>
-                    </div>                                         
-                </ul>
+                    <nav class="navbar navbar-dark bg-primary" style="color: white">
+                        PRINER - API RBI - Versão Beta - By Subtil
+
+                            <div class="bg-primary"  >
+                                <div class="aria-haspopup="true">          
+                                    {% if user.is_authenticated %}
+                                        <li> Usuário: {{user}} </li>
+                                    {% endif %}
+                                </div>
+                                {% if not user.is_authenticated %}
+                                    <li><a href="{% url 'register' %}" style="text-decoration: none;"> Cadastre-se </a></li>
+                                    <li><a href="{% url 'login' %}" style="text-decoration: none;">Login</a></li>
+                                {% endif %}
+                                
+                            </div>
+                    </nav>
+                                                      
+                
             </nav>
         </header>
 

@@ -9,9 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="{% static 'index.js' %}" defer></script>
-    <script src="{% static 'tabela46.js' %}"defer></script>
-        
-
+           
     <!-- jstree css -->
     <link href="index.css" rel="stylesheet" type="text/css">
   </head>
@@ -55,7 +53,7 @@
                     <a class="dropdown-item" href="#">Calculadora</a>
                     <a class="dropdown-item" href="#">Importar</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="configuracao.html">Configurações</a>
+                    <a class="dropdown-item" href="#">Configurações</a>
                 </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -72,14 +70,7 @@
         </div>
     </nav>
     </div>
-    <div class="card">
-        <div class="card-header">
-                <a href="#"><img src="{% static '/imagens/salvar-arquivo.jpg' %}" width="33px"/> </button>
-                <input type="submit" value="Salvar" class="btn btn-primary">
-                <a href="#"><img src="{% static '/imagens/abrir_pasta.jpg' %}" width="40px">
-                <a href="#"><img src="{% static '/imagens/Calculadora.jpg' %}" width="27px"></a>
-         </div>
-    </div>
+    
     <div class="container-md  style=" >
         <div class="row g-0 p-0"  >
             <div class="col-1.1 p-0">
@@ -154,10 +145,13 @@
                                                                                                         <a
                                                                                                             class="list-group list-group-flush"
                                                                                                             data-toggle="collapse"
+
                                                                                                             href="#collapse-{{empresa.id}}-{{area.id}}-{{tag.id}}-{{componente.id}}-{{proposta.id}}"
                                                                                                             role="button"
+
                                                                                                             aria-expanded="false"
                                                                                                             aria-controls="collapse-{{empresa.id}}-{{area.id}}-{{tag.id}}-{{componente.id}}-{{proposta.id}}"
+
                                                                                                             >{{ proposta.numeroproposta }}
                                                                                                         </a>                                                                                                       
                                                                                                     </li>
@@ -558,8 +552,8 @@
                                             <label for="recalqapi653" class="col-sm-6 col-form-label pt-0"  >No caso de Tanque (Foi feita avaliação de recalque?)</label>
                                             <div class="col-sm-5 col-form-label- p-0" >
                                                 <select class="form-control form-control-2g" id="recalqapi653">
-                                                    <option>Sim, valores excedentes API 653</option>
                                                     <option>Sim, valores conforme API 653</option>
+                                                    <option>Sim, valores excedentes API 653</option>
                                                     <option>Nunca foi feito</option>
                                                     <option>Fundação concreto</option>
                                                     <option>Não aplicável</option>
@@ -706,6 +700,7 @@
                                                 <span>PoTHINp3 = </span><span id="resultado18"></span><br>
                                                 <span><b>Cálculo do fator de dano base</b></span><br>
                                                 <span>DTHINfb = </span><span id="resultado19"></span><br>
+                                                <span id="resultado28"></span><br>
                                                 <span><b>Aplicando fatores de correção</b></span><br>
                                                 <span>DTHINf=MAX((DTHIN*FIP*FDL*FWD*FAM*FSM/FOM),0,1)</span><br>
                                                 <span>FIP (Fatorpara ponto de injeção) </span><span id="resultado20"></span><br>
@@ -718,6 +713,7 @@
                                                 <span id="resultado26"></span><br>
                                                 <span><b>Cálculo da Probabilidade de Falha = </b></span><br>
                                                 <span id="resultado27"></span><br>
+                                                
                                             </div>
                                          </div>
                                     </div>

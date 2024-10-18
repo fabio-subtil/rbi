@@ -88,36 +88,43 @@ function calcular() {
     var elemResult25 = document.getElementById("resultado25");
     var elemResult26 = document.getElementById("resultado26");
     var elemResult27 = document.getElementById("resultado27");
+    var elemResult28 = document.getElementById("resultado28");
+    var elemResult29 = document.getElementById("resultado29");
+    var elemResult30 = document.getElementById("resultado30");
     
-
     if (elemResult.textContent === undefined) {
        elemResult.textContent = "Art = (1-(tmin-C*age)/(tmin+CA) = " + Number(1-(num1-num2*num3)/(num1+num4)).toFixed(4);
+       var resultado = (1-(num1-num2*num3)/(num1+num4));
     }
     else { // IE
        elemResult.innerText = "Art = (1-(tmin-C*age)/(tmin+CA) =" + Number(1-(num1-num2*num3)/(num1+num4)).toFixed(4);
+       var resultado = (1-(num1-num2*num3)/(num1+num4));
     }
     if (elemResult2.textContent === undefined) {
       elemResult2.textContent = "Art = (Cr,bm*agetk)/trdi) = " + Number(1-(num1-num2*num3)/(num1+num4)).toFixed(4);
-   }
-   else { // IE
+      var resultado2 = (1-(num1-num2*num3)/(num1+num4));
+    }
+    else { // IE
       elemResult2.innerText = "Art = (Cr,bm*agetk)/trdi) =" + Number((num2*num3)/num1).toFixed(4);
-   }
-   if (elemResult3.textContent === undefined) {
+      var resultado2 = (1-(num1-num2*num3)/(num1+num4));
+    }
+    if (elemResult3.textContent === undefined) {
       elemResult3.textContent = "Art = (Cr,cm*agetk)/trdi) = " + Number(1-(num1-num2*num3)/(num1+num4)).toFixed(4);
-   }
-   else { // IE
+      var resultado3 = (1-(num1-num2*num3)/(num1+num4));
+    }
+    else { // IE
       elemResult3.innerText = "Art = (Cr,cm*agetk)/trdi) =" + Number((num5*num3)/num1).toFixed(4);
-   }
-   if (elemResult4.textContent === undefined) {
+    }
+    if (elemResult4.textContent === undefined) {
       elemResult4.textContent = "Art = (Cr,cm*agetk+Crbm*agetk-agerc))/trdi) = " + Number((num5*num3)/num1).toFixed(4);
-   }
-   else { // IE
+    }
+    else { // IE
       elemResult4.innerText = "Art = (Cr,cm*agetk+Crbm*agetk-agerc))/trdi) =" + Number((num5*num3+num2*num3)/num1).toFixed(4);
-   }
-   if (elemResult5.textContent === undefined) {
+    }
+    if (elemResult5.textContent === undefined) {
       elemResult5.textContent = "5= " + Number((num5*num3)/num1).toFixed(4);
    }
-   else { // IE
+    else { // IE
       elemResult5.innerText = "5_1 = (Cr,cm*agetk+Crbm*agetk-agerc))/trdi) =" + Number((num5*num3+num2*num3)/num1).toFixed(4);
    }
    if (elemResult6.textContent === undefined) {
@@ -132,27 +139,21 @@ function calcular() {
    else { // IE
       elemResult7.innerText = "S*E*MAX(tmin,tc)/(FSThin*trdi) =" + Number(num9*num8*Math.max(num1,num10)/((((num7+num6)*num8*1.1)/2)*num1)).toFixed(4);
    }
-   if (elemResult8.textContent === undefined) {
-      
-      
-
-
+   if (elemResult8.textContent === undefined) { 
       
       elemResult8.textContent = "alpha =" + JSON.parse(tab46);
-
-
-
-      
 
    }
    else { // IE
       elemResult8.innerText = "alpha =" + Number(2).toFixed(2);
    }
    if (elemResult9.textContent === undefined) {
-      elemResult9.textContent = "P*D/(alpha*FS*trdi) =" + Number((num11*num12/1000)/(2*(((num7+num6)*num8*1.1)/2)*num1)).toFixed(4);
+      elemResult9.textContent = "9 P*D/(alpha*FS*trdi) =" + Number((num11*num12/1000)/(2*(((num7+num6)*num8*1.1)/2)*num1)).toFixed(4);
+      var resultado9 = ((num11*num12/1000)/(2*(((num7+num6)*num8*1.1)/2)*num1)).toFixed(4);
    }
    else { // IE
-      elemResult9.innerText = "P*D/(alpha*FS*trdi) =" + Number((num11*num12/1000)/(2*(((num7+num6)*num8*1.1)/2)*num1)).toFixed(4);
+      elemResult9.innerText = "9.1 P*D/(alpha*FS*trdi) =" + Number((num11*num12/1000)/(2*(((num7+num6)*num8*1.1)/2)*num1)).toFixed(4);
+      var resultado9 = ((num11*num12/1000)/(2*(((num7+num6)*num8*1.1)/2)*num1)).toFixed(4);
    }
    if (elemResult10.textContent === undefined) {
       elemResult10.textContent = + Number((0.5*0.9**0)*(0.7**1)*(0.5**0)*(0.4**0)).toFixed(4);
@@ -180,47 +181,64 @@ function calcular() {
    }
    if (elemResult13.textContent === undefined) {
       elemResult13.textContent = "13 =" + Number((resultado10/(resultado10+resultado11+resultado12))).toFixed(4);
+      var resultado13 = ((resultado10/(resultado10+resultado11+resultado12)));
    }
    else { // IE
       elemResult13.innerText = "13_1 =" + Number((resultado10/(resultado10+resultado11+resultado12))).toFixed(4);
+      var resultado13 = ((resultado10/(resultado10+resultado11+resultado12)));
    }
    if (elemResult14.textContent === undefined) {
       elemResult14.textContent = "14 =" + Number((resultado11/(resultado10+resultado11+resultado12))).toFixed(4);
+      var resultado14 = ((resultado11/(resultado10+resultado11+resultado12)));
    }
    else { // IE
       elemResult14.innerText = "14_1 =" + Number((resultado11/(resultado10+resultado11+resultado12))).toFixed(4);
+      var resultado14 = ((resultado11/(resultado10+resultado11+resultado12)));
    }
    if (elemResult15.textContent === undefined) {
       elemResult15.textContent = "15 =" + Number((resultado12/(resultado10+resultado11+resultado12))).toFixed(4);
+      var resultado15 = ((resultado12/(resultado10+resultado11+resultado12)));
    }
    else { // IE
       elemResult15.innerText = "15_1 =" + Number((resultado12/(resultado10+resultado11+resultado12))).toFixed(4);
+      var resultado15 = ((resultado12/(resultado10+resultado11+resultado12)));
    }
    if (elemResult16.textContent === undefined) {
-      elemResult16.textContent = "16 =" + Number(((1-1*0.3018)-0.2967)/(((1**2*0.3018**2*0.2**2+(1-1*0.3018)**2*0.2**2+0.2967**2*0.05**2))**(1/2))).toFixed(4);
+      elemResult16.textContent = "16 =" + Number(((1-1*resultado2)-0.2967)/(((1**2*resultado2**2*0.2**2+(1-1*resultado2)**2*0.2**2+0.2967**2*0.05**2))**(1/2))).toFixed(4);
+      var resultado16 = (((1-1*resultado2)-0.2967)/(((1**2*resultado2**2*0.2**2+(1-1*resultado2)**2*0.2**2+0.2967**2*0.05**2))**(1/2)));
    }
    else { // IE
-      elemResult16.innerText = "16_1 =" + Number(((1-1*0.3018)-0.2967)/(((1**2*0.3018**2*0.2**2+(1-1*0.3018)**2*0.2**2+0.2967**2*0.05**2))**(1/2))).toFixed(4);
+      elemResult16.innerText = "16_1 =" + Number(((1-1*resultado2)-0.2967)/(((1**2*resultado2**2*0.2**2+(1-1*resultado2)**2*0.2**2+0.2967**2*0.05**2))**(1/2))).toFixed(4);
+      var resultado16 = (((1-1*resultado2)-0.2967)/(((1**2*resultado2**2*0.2**2+(1-1*resultado2)**2*0.2**2+0.2967**2*0.05**2))**(1/2)));
    }
    if (elemResult17.textContent === undefined) {
-      elemResult17.textContent = "17 =" + Number(((1-2*0.3018)-0.2967)/(((2**2*0.3018**2*0.2**2+(1-2*0.3018)**2*0.2**2+0.2967**2*0.05**2))**(1/2))).toFixed(4);
+      elemResult17.textContent = "17 =" + Number(((1-2*resultado2)-0.2967)/(((2**2*resultado2**2*0.2**2+(1-2*resultado2)**2*0.2**2+0.2967**2*0.05**2))**(1/2))).toFixed(4);
+      var resultado17 = (((1-2*resultado2)-0.2967)/(((2**2*resultado2**2*0.2**2+(1-2*resultado2)**2*0.2**2+0.2967**2*0.05**2))**(1/2)));
    }
    else { // IE
-      elemResult17.innerText = "17_1=" + Number(((1-2*0.3018)-0.2967)/(((2**2*0.3018**2*0.2**2+(1-2*0.3018)**2*0.2**2+0.2967**2*0.05**2))**(1/2))).toFixed(4);
+      elemResult17.innerText = "17_1=" + Number(((1-2*resultado2)-0.2967)/(((2**2*resultado2**2*0.2**2+(1-2*resultado2)**2*0.2**2+0.2967**2*0.05**2))**(1/2))).toFixed(4);
+      var resultado17 = (((1-2*resultado2)-0.2967)/(((2**2*resultado2**2*0.2**2+(1-2*resultado2)**2*0.2**2+0.2967**2*0.05**2))**(1/2)));
    }
    if (elemResult18.textContent === undefined) {
-      elemResult18.textContent = "18 =" + Number(((1-4*0.3018)-0.2967)/(((4**2*0.3018**2*0.2**2+(1-4*0.3018)**2*0.2**2+0.2967**2*0.05**2))**(1/2))).toFixed(4);
+      elemResult18.textContent = "18 =" + Number(((1-4*resultado2)-0.2967)/(((4**2*resultado2**2*0.2**2+(1-4*resultado2)**2*0.2**2+0.2967**2*0.05**2))**(1/2))).toFixed(4);
+      var resultado18 = (((1-4*resultado2)-0.2967)/(((4**2*resultado2**2*0.2**2+(1-4*resultado2)**2*0.2**2+0.2967**2*0.05**2))**(1/2)));
    }
    else { // IE
-      elemResult18.innerText = "18_1 =" + Number(((1-4*0.3018)-0.2967)/(((4**2*0.3018**2*0.2**2+(1-4*0.3018)**2*0.2**2+0.2967**2*0.05**2))**(1/2))).toFixed(4);
+      elemResult18.innerText = "18_1 =" + Number(((1-4*resultado2)-0.2967)/(((4**2*resultado2**2*0.2**2+(1-4*resultado2)**2*0.2**2+0.2967**2*0.05**2))**(1/2))).toFixed(4);
+      var resultado18 = (((1-4*resultado2)-0.2967)/(((4**2*resultado2**2*0.2**2+(1-4*resultado2)**2*0.2**2+0.2967**2*0.05**2))**(1/2)));
    }
+
+
+
+
+
    if (elemResult19.textContent === undefined) {
-      elemResult19.textContent = "19 =" + Number(534.59).toFixed(4) ;
-      var resultado19 = + Number(534.59).toFixed(4);
+      elemResult19.textContent = "19 =" + Number(((resultado13*0.004307)+(resultado14*0.246041)+(resultado15*0.979964))/0.000156).toFixed(4);
+      var resultado19 = + Number(((resultado13*0.04307)+(resultado14*0.246041)+(resultado15*0.979964))/0.000156).toFixed(4);
    }
    else { // IE
-      elemResult19.innerText = "19_1 =" + Number(534.59).toFixed(4) ;
-      var resultado19 = + Number(534.59).toFixed(4);
+      elemResult19.innerText = "19_1 =" + Number(((resultado13*0.004307)+(resultado14*0.246041)+(resultado15*0.979964))/0.000156).toFixed(4);
+      var resultado19 = + Number(((resultado13*0.004307)+(resultado14*0.246041)+(resultado15*0.979964))/0.000156).toFixed(4);
    }  
    if (num13=="Sim"){
       var fip = 3;
@@ -229,10 +247,10 @@ function calcular() {
       var fip = 1;
    }
    if (num14=="Sim"){
-      var fdl = 1;
+      var fdl = 3;
    }
    else {
-      var fdl = 3;
+      var fdl = 1;
    }
    if (num15=="Soldado"){
       var fwd = 1;
@@ -306,18 +324,118 @@ function calcular() {
       elemResult25.innerText = "FOM (Tabela 4.8)= Falta calcular =" + 1;
    }
    if (elemResult26.textContent === undefined) {
-      elemResult26.textContent = "DANO = (FIP*FDL*FWD*FAM*FSM*FOM*DTHINfb) = " + resultado19 ;
+      elemResult26.textContent = "DANO 26 = (FIP*FDL*FWD*FAM*FSM*FOM*DTHINfb) = " + (resultado19*fip*fdl*fwd*fam*fsm*fom) ;
    }
    else { // IE
-      elemResult26.innerText = "DANO = (FIP*FDL*FWD*FAM*FSM*FOM*DTHINfb) =" + resultado19;
+      elemResult26.innerText = "DANO 26.1 = (FIP*FDL*FWD*FAM*FSM*FOM*DTHINfb) =" + (resultado19*fip*fdl*fwd*fam*fsm*fom);
    }
    if (elemResult27.textContent === undefined) {
       elemResult27.textContent = "Probabilidade =" + Number(0.0000306*fip*fdl*fwd*fam*fsm*fom*resultado19).toFixed(4);
    }
    else { // IE
       elemResult27.innerText = "Probabilidade =" + Number(0.0000306*fip*fdl*fwd*fam*fsm*fom*resultado19).toFixed(4);
-
    }
+
+
+
+
+
+
+
+
+
+
+var myval = 14;
+var mean = 15.5;
+var SD = 4.8333;
+
+var answer = centile(mean, SD, myval);
+console.log(answer);
+
+function centile(mean, SD, val)
+{
+    z = (val-mean)/SD;
+    ans = NORMSDIST(z);
+    return ans;
 }
 
+function erf(x)
+{
+    //A&S formula 7.1.26
+  
+  var ans = 0;
+    var a1 = 0.254829592;
+    var a2 = -0.284496736;
+    var a3 = 1.421413741;
+    var a4 = -1.453152027;
+    var a5 = 1.061405429;
+    var p = 0.3275911;
+    x = Math.abs(x);
+    var t = 1 / (1 + p * x);
+    //Horner's method, takes O(n) operations for nth order polynomial
+    ans = 1 - ((((((a5 * t + a4) * t) + a3) * t + a2) * t) + a1) * t * Math.exp(-1 * x * x);
+    return ans; 
+}
+
+function NORMSDIST(z)
+{
+    var ans = 0;
+    var sign = 1;
+    if (z < 0) sign = -1;
+    ans = 0.5 * (1.0 + sign * erf(Math.abs(z)/Math.sqrt(2)));
+    return ans;
+    
+}
+
+
+
+
+
+   // myval será o valor a ser calculado
+   var myval =-resultado17
+   var mean = 0
+   var SD = 1
+
+   var answer = centile(mean, SD, myval);
+   console.log(answer)
+
+   function centile(mean, SD, val)
+   {
+   z = (val-mean)/SD;
+   ans = NORMSDIST(z);
+   return ans;
+   }
+
+   function erf(x)
+   {
+   //A&S formula 7.1.26
+
+   var ans = 0;
+   var a1 = 0.254829592;
+   var a2 = -0.284496736;
+   var a3 = 1.421413741;
+   var a4 = -1.453152027;
+   var a5 = 1.061405429;
+   var p = 0.3275911;
+   x = Math.abs(x);
+   var t = 1 / (1 + p * x);
+   //Horner's method, takes O(n) operations for nth order polynomial
+   ans = 1 - ((((((a5 * t + a4) * t) + a3) * t + a2) * t) + a1) * t * Math.exp(-1 * x * x);
+   return ans; 
+   }
+
+   function NORMSDIST(z)
+   {
+   var ans = 0;
+   var sign = 1;
+   if (z < 0) sign = -1;
+   ans = 0.5 * (1.0 + sign * erf(Math.abs(z)/Math.sqrt(2)));
+ 
+      elemResult28.textContent = + Number(ans);
+      elemResult28.innerText = + Number(ans);
+   }
+
+   
+
+}
 

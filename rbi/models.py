@@ -165,10 +165,3 @@ class Abavolumemassa(models.Model):
             self.slug = slugify(self.volumeequip)
         return super().save()
     
-
-    
-    
-
-
-    
-
