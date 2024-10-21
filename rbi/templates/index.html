@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="{% static 'index.js' %}" defer></script>
+    <script src="{% static 'indexs4.js' %}" defer></script>
            
     <!-- jstree css -->
     <link href="index.css" rel="stylesheet" type="text/css">
@@ -183,7 +183,7 @@
                             <a class="nav-item nav-link shadow p-3 mb-5 bg-info text-white rounded" style="height: 40px"; id="nav-a-tab" data-toggle="tab" href="#nav-a" role="tab" aria-controls="nav-a" aria-selected="false">Componente</a>
                             <a class="nav-item nav-link shadow p-3 mb-5 bg-info text-white rounded" style="height: 40px"; id="nav-b-tab" data-toggle="tab" href="#nav-b" role="tab" aria-controls="nav-b" aria-selected="false">Condições operacionais</a>
                             <a class="nav-item nav-link shadow p-3 mb-5 bg-info text-white rounded" style="height: 40px"; id="nav-c-tab" data-toggle="tab" href="#nav-c" role="tab" aria-controls="nav-c" aria-selected="false">Dados gerais</a>
-                            <a class="nav-item nav-link shadow p-3 mb-5 bg-info text-white rounded" style="height: 40px"; id="nav-d-tab" data-toggle="tab" href="#nav-d" role="tab" aria-controls="nav-d" aria-selected="false">Volume e Massa</a>
+                            <a class="nav-item nav-link shadow p-3 mb-5 bg-danger text-white rounded" style="height: 40px"; id="nav-d-tab" data-toggle="tab" href="#nav-d" role="tab" aria-controls="nav-d" aria-selected="false">Consequência</a>
                             <a class="nav-item nav-link shadow p-3 mb-5 bg-success text-white rounded" style="height: 40px"; id="nav-e-tab" data-toggle="tab" href="#nav-e" role="tab" aria-controls="nav-e" aria-selected="false">Mecanismos de dano</a>
                             <a class="nav-item nav-link shadow p-3 mb-5 bg-info text-white rounded" style="height: 40px"; id="nav-f-tab" data-toggle="tab" href="#nav-f" role="tab" aria-controls="nav-f" aria-selected="false">Históricos de inspeção</a>
                             <a class="nav-item nav-link shadow p-3 mb-5 bg-info text-white rounded" style="height: 40px"; id="nav-g-tab" data-toggle="tab" href="#nav-g" role="tab" aria-controls="nav-g" aria-selected="false">Resultados (Risco)</a>
@@ -221,16 +221,20 @@
                                                 <input type="text" class="form-control col-form-label" id="nomeequip" placeholder="">
                                             </div>
                                         </div>
-                                    
+                                        <div class="form-group row pt-0" style="height: 25px";>
+                                            <label for="volumeequip" class="col-sm-5 col-form-label">Volume do equipamento (m&sup3)</label>
+                                            <div class="col-sm-5 col-form-label p-0">
+                                                <input type="text" class="form-control col-form-label" id="volumeequip" placeholder="">
+                                            </div>
+                                        </div>
                                         <div class="form-group row pt-0" style="height: 25px";>  
                                             <label for="descproc" class="col-sm-5 col-form-label pt-0">Descrição do processo</label>
                                             <div class="col-sm-5 col-form-label p-0" >
-                                                <input type="text" class="form-control col-form-label" id="descproc" maxlength="100" placeholder="">
+                                            <textarea input type="text" class="form-control col-form-label" id="descproc" ></textarea>
                                             </div>
                                         </div>
                                     </div>  
-                                                                             
-                                </div>          
+                                 </div>          
                             </div>
                         </div>       
                         
@@ -264,6 +268,14 @@
                                             <option>COLMID</option>
                                     </select>
                                 </div> 
+                            </div>
+
+
+                            <div class="form-group row" style="height: 25px";>
+                                <label for="volumecomp" class="col-sm-3 col-form-label">Volume do componente (m&sup3)</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" id="volumecomp" placeholder="">
+                                </div>
                             </div>
                             <div class="form-group row" style="height: 25px";>
                                 <label for="eficjun" class="col-sm-3 col-form-label">Eficiência de junta (E)</label>
@@ -462,12 +474,7 @@
                                                 <input type="date" class="form-control col-form-label pt-0" id="datainiope" >
                                             </div>
                                         </div>
-                                        <div class="form-group row " style="height: 25px";>
-                                            <label for="nomecomp" class="col-sm-5 col-form-label">Nome do componente</label>
-                                            <div class="col-sm-5 p-0">
-                                                <input type="text" class="form-control col-form-label" id="nomecomp" placeholder="">
-                                            </div>
-                                        </div>                           
+                                                                  
                                         <div class="form-group row " style="height: 25px";>
                                             <label for="materialcomp" class="col-sm-5 col-form-label">Material do componente</label>
                                             <div class="col-sm-5 p-0">
@@ -566,20 +573,83 @@
                             </div>
                         <div class="tab-pane fade" id="nav-d" role="tabpanel" aria-labelledby="nav-d-tab">
                                                                           
-                            <div class="form-group row" style="height: 25px";>
-                                <label for="volumeequip" class="col-sm-3 col-form-label">Volume do equipamento (m&sup3)</label>
-                                <div class="col-sm-5">
-                                    <input type="text" class="form-control col-form-label-sm" id="volumeequip" placeholder="">
+                            
+                            <nav>
+                                <div class="nav nav-tabs pt-1" id="nav-tab" role="tablist" style="height: 30px">
+                                    <a class="nav-item nav-link active shadow p-3 mb-5 bg-danger text-white rounded" style="height: 40px"; id="nav-d1-tab" data-toggle="tab" href="#nav-d1" role="tab" aria-controls="nav-d1" aria-selected="true"> Explosão</a>
+                                    <a class="nav-item nav-link shadow p-3 mb-5 bg-danger text-white rounded" style="height: 40px" id="nav-d2-tab" data-toggle="tab" href="#nav-d2" role="tab" aria-controls="nav-d2" aria-selected="false"> Toxico</a>
+                                    <a class="nav-item nav-link shadow p-3 mb-5 bg-danger text-white rounded" style="height: 40px" id="nav-d3-tab" data-toggle="tab" href="#nav-d3" role="tab" aria-controls="nav-d3" aria-selected="false">(Outros) SCC</a>
+                                                                 
                                 </div>
+                            </nav>
+
+                            <div class="tab-content p-3" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-d1" role="tabpanel" aria-labelledby="nav-d1-tab">
+                                
+                                        
+                                    <div class="container-md">
+                                        <div class="row g-0 p-0">
+                                            <div class="col-8 p-0">
+                                                <div class="form-group row pt-0" style="height: 25px";>
+                                                    <label for="linning" class="col-sm-3 col-form-label">Explosão</label>
+                                                    <div class="col-sm-3">
+                                                        <select class="form-control form-control-2g" id="linning">
+                                                            <option>EEEEE</option>
+                                                            <option>FFFFF</option>
+                                                        </select>
+                                                    </div> 
+                                                </div> 
+                                            </div>              
+                                        </div> 
+                                    </div>  
+                                </div>    
+                             
+                            
+                            
+                                <div class="tab-pane fade" id="nav-d2" role="tabpanel" aria-labelledby="nav-d2-tab">
+                                        
+                                    <div class="container-md">
+                                        <div class="row g-0 p-0">
+                                            <div class="col-8 p-0">
+                                                <div class="form-group row pt-0" style="height: 25px";>
+                                                    <label for="linning" class="col-sm-3 col-form-label">Toxico</label>
+                                                    <div class="col-sm-3">
+                                                        <select class="form-control form-control-2g" id="linning">
+                                                            <option>ZZZZZ</option>
+                                                            <option>WWWWW</option>
+                                                        </select>
+                                                    </div> 
+                                                </div> 
+                                            </div> 
+                                        </div> 
+                                    </div> 
+                                </div> 
+
+                                <div class="tab-pane fade" id="nav-d3" role="tabpanel" aria-labelledby="nav-d3-tab">
+                                        
+                                    <div class="container-md">
+                                        <div class="row g-0 p-0">
+                                            <div class="col-8 p-0">
+                                                <div class="form-group row pt-0" style="height: 25px";>
+                                                    <label for="linning" class="col-sm-3 col-form-label">Outros</label>
+                                                    <div class="col-sm-3">
+                                                        <select class="form-control form-control-2g" id="linning">
+                                                            <option>XXXX</option>
+                                                            <option>YYYY</option>
+                                                        </select>
+                                                    </div> 
+                                                </div> 
+                                            </div> 
+                                        </div> 
+                                    </div> 
+                                </div> 
                             </div>
-                                  
-                            <div class="form-group row" style="height: 25px";>
-                                <label for="volumecomp" class="col-sm-3 col-form-label">Volume do componente (m&sup3)</label>
-                                <div class="col-sm-5">
-                                    <input type="text" class="form-control" id="volumecomp" placeholder="">
-                                </div>
-                            </div>
-                        </div>               
+
+
+
+                        </div>  
+                        
+                        
                         <div class="tab-pane fade p-0" id="nav-e" role="tabpanel" aria-labelledby="nav-e-tab">
                             <nav>
                                 <div class="nav nav-tabs pt-1" id="nav-tab" role="tablist" style="height: 30px">
@@ -700,7 +770,6 @@
                                                 <span>PoTHINp3 = </span><span id="resultado18"></span><br>
                                                 <span><b>Cálculo do fator de dano base</b></span><br>
                                                 <span>DTHINfb = </span><span id="resultado19"></span><br>
-                                                <span id="resultado28"></span><br>
                                                 <span><b>Aplicando fatores de correção</b></span><br>
                                                 <span>DTHINf=MAX((DTHIN*FIP*FDL*FWD*FAM*FSM/FOM),0,1)</span><br>
                                                 <span>FIP (Fatorpara ponto de injeção) </span><span id="resultado20"></span><br>
@@ -713,6 +782,11 @@
                                                 <span id="resultado26"></span><br>
                                                 <span><b>Cálculo da Probabilidade de Falha = </b></span><br>
                                                 <span id="resultado27"></span><br>
+                                                <span></span> 28 </span><span id="resultado28"></span><br>
+                                                <span></span> 29 </span><span id="resultado29"></span><br>
+                                                <span></span> 30 </span><span id="resultado30"></span><br>
+                                                
+                                                
                                                 
                                             </div>
                                          </div>
@@ -964,7 +1038,7 @@
                                                             <div class="form-group row">
                                                                 <label for="inputEmail3" class="col-sm-4 col-form-label">Exposição ao cloreto (ppm)</label>
                                                                 <div class="col-sm-2">
-                                                                    <input type="text" class="form-control" id="inputEmail3" placeholder="">
+                                                                    <input type="text" class="form-control" id="expocl" placeholder="">
                                                                 </div>
                                                             </div>
                                                                                                                                                                         
@@ -1070,7 +1144,7 @@
                                                         </div>
 
                                                         <div class="form-check">
-                                                            <input class="form-check-input ml-1" type="checkbox" value="" id="flexCheckDefault">
+                                                            <input class="form-check-input ml-1" type="checkbox" value="" id="compsemcostura">
                                                             <label class="form-check-label ml-4" for="flexCheckDefault">
                                                                 Componente sem costura (solda)
                                                             </label>
@@ -1170,7 +1244,7 @@
                                                         </div>
                                                         
                                                         <div class="form-group row" style="height: 25px";>
-                                                            <label for="projetocont" class="col-sm-3 col-form-label">Projeto do equipamento contemplamponente</label>
+                                                            <label for="projetocont" class="col-sm-3 col-form-label">Projeto do equipamento contempla componente</label>
                                                             <div class="col-sm-3">
                                                                 <select class="form-control form-control-2g" id="projetocont">
                                                                     <option>Sim</option>
@@ -1189,7 +1263,7 @@
                                                         </div>
 
                                                         <div class="form-group row pt-0" style="height: 25px";>
-                                                            <label for="datapint" class="col-sm-3 col-form-label" >Data de instalação da pintura</label>
+                                                            <label for="datapint" class="col-sm-3 col-form-label" >Data da instalação da pintura</label>
                                                             <div class="col-sm-3">
                                                                 <input type="date" class="form-control col-form-label" id="datapint" placeholder="">
                                                             </div>
@@ -1849,7 +1923,70 @@
                             </table>
                         </div>
                         <div class="tab-pane fade p-0" id="nav-g" role="tabpanel" aria-labelledby="nav-g-tab">      
-                            <a href="#"><img src="{% static '/imagens/Matrix.bmp' %}" width="500px"></a>
+
+                            <nav>
+                                <div class="nav nav-tabs pt-1" id="nav-tab" role="tablist" style="height: 30px">
+                                    <a class="nav-item nav-link active shadow p-3 mb-5 bg-info text-white rounded" style="height: 40px"; id="nav-g1-tab" data-toggle="tab" href="#nav-g1" role="tab" aria-controls="nav-g1" aria-selected="true"> Probabilidade</a>
+                                    <a class="nav-item nav-link shadow p-3 mb-5 bg-info text-white rounded" style="height: 40px" id="nav-g2-tab" data-toggle="tab" href="#nav-g2" role="tab" aria-controls="nav-g2" aria-selected="false"> Consequência</a>
+                                    <a class="nav-item nav-link shadow p-3 mb-5 bg-info text-white rounded" style="height: 40px" id="nav-g3-tab" data-toggle="tab" href="#nav-g3" role="tab" aria-controls="nav-g3" aria-selected="false">Risco</a>
+                                                                 
+                                </div>
+                            </nav>
+
+                            <div class="tab-content p-3" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-g1" role="tabpanel" aria-labelledby="nav-g1-tab">   
+                                    <div class="container-md">
+                                        <div class="row g-0 p-0">
+                                            <div class="col-8 p-0">
+                                                <div class="form-group row pt-0" style="height: 25px";>
+                                                    Probabilidade<br>
+                                                    Probabilidade<br>
+                                                    
+                                                    
+                                                                                                                                                       
+                                                </div>                                                                                                  
+                                            </div> 
+                                        </div>              
+                                    </div> 
+                                </div>  
+                                                          
+                                <div class="tab-pane fade" id="nav-g2" role="tabpanel" aria-labelledby="nav-g2-tab">    
+                                    <div class="container-md">
+                                        <div class="row g-0 p-0">
+                                            <div class="col-8 p-0">
+                                                <div class="form-group row pt-0" style="height: 25px";>
+                                                    Consequência<br>
+                                                    Consequência<br>
+                                                    Consequência<br>
+                                                    
+                                                    
+                                                </div> 
+                                            </div> 
+                                        </div> 
+                                    </div> 
+                                </div> 
+
+                                <div class="tab-pane fade" id="nav-g3" role="tabpanel" aria-labelledby="nav-g3-tab">
+                                        
+                                    <div class="container-md">
+                                        <div class="row g-0 p-0">
+                                            <div class="col-8 p-0">
+                                                <div class="form-group row pt-0" style="height: 25px";>
+                                                    <label for="linning" class="col-sm-3 col-form-label">Risco</label>
+                                                    
+                                                        <a href="#"><img src="{% static '/imagens/Matrix.bmp' %}" width="500px"></a>
+                                                    
+                                                </div> 
+                                            </div> 
+                                        </div> 
+                                    </div> 
+                                </div> 
+                            </div>
+
+
+
+
+                            
                             
                         
                         </div>

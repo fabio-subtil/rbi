@@ -1,5 +1,5 @@
 
-static/index.js
+static/indexs4.js
 
 var tab46 = 
 {
@@ -228,17 +228,13 @@ function calcular() {
       var resultado18 = (((1-4*resultado2)-0.2967)/(((4**2*resultado2**2*0.2**2+(1-4*resultado2)**2*0.2**2+0.2967**2*0.05**2))**(1/2)));
    }
 
-
-
-
-
    if (elemResult19.textContent === undefined) {
       elemResult19.textContent = "19 =" + Number(((resultado13*0.004307)+(resultado14*0.246041)+(resultado15*0.979964))/0.000156).toFixed(4);
       var resultado19 = + Number(((resultado13*0.04307)+(resultado14*0.246041)+(resultado15*0.979964))/0.000156).toFixed(4);
    }
    else { // IE
       elemResult19.innerText = "19_1 =" + Number(((resultado13*0.004307)+(resultado14*0.246041)+(resultado15*0.979964))/0.000156).toFixed(4);
-      var resultado19 = + Number(((resultado13*0.004307)+(resultado14*0.246041)+(resultado15*0.979964))/0.000156).toFixed(4);
+      var resultado19 = (((resultado13*0.004307)+(resultado14*0.246041)+(resultado15*0.979964))/0.000156).toFixed(4);
    }  
    if (num13=="Sim"){
       var fip = 3;
@@ -329,6 +325,7 @@ function calcular() {
    else { // IE
       elemResult26.innerText = "DANO 26.1 = (FIP*FDL*FWD*FAM*FSM*FOM*DTHINfb) =" + (resultado19*fip*fdl*fwd*fam*fsm*fom);
    }
+
    if (elemResult27.textContent === undefined) {
       elemResult27.textContent = "Probabilidade =" + Number(0.0000306*fip*fdl*fwd*fam*fsm*fom*resultado19).toFixed(4);
    }
@@ -337,64 +334,13 @@ function calcular() {
    }
 
 
-
-
-
-
-
-
-
-
-var myval = 14;
-var mean = 15.5;
-var SD = 4.8333;
-
-var answer = centile(mean, SD, myval);
-console.log(answer);
-
-function centile(mean, SD, val)
-{
-    z = (val-mean)/SD;
-    ans = NORMSDIST(z);
-    return ans;
-}
-
-function erf(x)
-{
-    //A&S formula 7.1.26
-  
-  var ans = 0;
-    var a1 = 0.254829592;
-    var a2 = -0.284496736;
-    var a3 = 1.421413741;
-    var a4 = -1.453152027;
-    var a5 = 1.061405429;
-    var p = 0.3275911;
-    x = Math.abs(x);
-    var t = 1 / (1 + p * x);
-    //Horner's method, takes O(n) operations for nth order polynomial
-    ans = 1 - ((((((a5 * t + a4) * t) + a3) * t + a2) * t) + a1) * t * Math.exp(-1 * x * x);
-    return ans; 
-}
-
-function NORMSDIST(z)
-{
-    var ans = 0;
-    var sign = 1;
-    if (z < 0) sign = -1;
-    ans = 0.5 * (1.0 + sign * erf(Math.abs(z)/Math.sqrt(2)));
-    return ans;
-    
-}
-
-
-
-
-
+   // Cálculo da distribuição normal
    // myval será o valor a ser calculado
-   var myval =-resultado17
-   var mean = 0
-   var SD = 1
+   // Caso 1
+   
+   var myval =-resultado17;
+   var mean = 0;
+   var SD = 1;
 
    var answer = centile(mean, SD, myval);
    console.log(answer)
@@ -426,16 +372,60 @@ function NORMSDIST(z)
 
    function NORMSDIST(z)
    {
-   var ans = 0;
+   var ans1 = 0;
    var sign = 1;
    if (z < 0) sign = -1;
-   ans = 0.5 * (1.0 + sign * erf(Math.abs(z)/Math.sqrt(2)));
+   ans1 = 0.5 * (1.0 + sign * erf(Math.abs(z)/Math.sqrt(2)));
  
-      elemResult28.textContent = + Number(ans);
-      elemResult28.innerText = + Number(ans);
+      elemResult28.textContent = + Number(ans1);
+      elemResult28.innerText = + Number(ans1);
+
    }
 
    
 
-}
+   var myval =-resultado17;
+   var mean = 0;
+   var SD = 1;
 
+   var answer = centile(mean, SD, myval);
+   console.log(answer)
+
+   function centile(mean, SD, val)
+   {
+   z = (val-mean)/SD;
+   ans = NORMSDIST(z);
+   return ans;
+   }
+
+   function erf(x)
+   {
+   //A&S formula 7.1.26
+
+   var ans = 0;
+   var a1 = 0.254829592;
+   var a2 = -0.284496736;
+   var a3 = 1.421413741;
+   var a4 = -1.453152027;
+   var a5 = 1.061405429;
+   var p = 0.3275911;
+   x = Math.abs(x);
+   var t = 1 / (1 + p * x);
+   //Horner's method, takes O(n) operations for nth order polynomial
+   ans = 1 - ((((((a5 * t + a4) * t) + a3) * t + a2) * t) + a1) * t * Math.exp(-1 * x * x);
+   return ans; 
+   }
+
+   function NORMSDIST(z)
+   {
+   var ans2 = 0;
+   var sign = 1;
+   if (z < 0) sign = -1;
+   ans2 = 0.5 * (1.0 + sign * erf(Math.abs(z)/Math.sqrt(2)));
+ 
+      elemResult29.textContent = + Number(ans2);
+      elemResult29.innerText = + Number(ans2);
+
+   }
+  
+}
