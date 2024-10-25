@@ -3,6 +3,12 @@
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="" width=device-width, initial-scale="1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
     <title>
         {% block title %}
         {% endblock %}
@@ -11,26 +17,24 @@
     <body>
         <header>
             <nav>
-                 
-
                     <nav class="navbar navbar-dark bg-primary" style="color: white">
                         PRINER - API RBI - Versão Beta - By Subtil
 
                             <div class="bg-primary"  >
-                                <div class="aria-haspopup="true">          
+                                <div class="aria-haspopup=" style="color: white">          
                                     {% if user.is_authenticated %}
-                                        <li> Usuário: {{user}} </li>
+                                        <p> Usuário: {{user}} </p>
+                                        <p></p>
                                     {% endif %}
                                 </div>
                                 {% if not user.is_authenticated %}
-                                    <li><a href="{% url 'register' %}" style="text-decoration: none;"> Cadastre-se </a></li>
-                                    <li><a href="{% url 'login' %}" style="text-decoration: none;">Login</a></li>
+                                    <li><a href="{% url 'register' %}" style="color: white"> Cadastre-se </a></li>
+                                    <li><a href="{% url 'login' %}" style="color: white">Login</a></li>
                                 {% endif %}
                                 
                             </div>
                     </nav>
                                                       
-                
             </nav>
         </header>
 

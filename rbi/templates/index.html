@@ -1,16 +1,14 @@
 {% extends "base.html" %}
-<!DOCTYPE html>
-<html lang="pt-br">
+
 {% load static %}
 {% block rbi %}
   <head>
+    
     <!-- Meta tags Obrigatórias -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="{% static 'indexs4.js' %}" defer></script>
-
+   
+    <script src="{% static 'index.js' %}" defer></script>
     <link href="index.css" rel="stylesheet" type="text/css">
+
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">    
@@ -21,15 +19,14 @@
                   Cadastro
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{% url 'cadastroempresa' %}">Nova Empresa</a>                         
+                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#Modal1">Nova Empresa</a>                         
                   <a class="dropdown-item" href="{% url 'cadastroarea' %}">Nova Área</a>
                   <a class="dropdown-item" href="{% url 'cadastroequip' %}">Novo Equipamento</a>
                   <a class="dropdown-item" href="{% url 'cadastrocomponente' %}">Novo Componente</a>
                   <a class="dropdown-item" href="{% url 'cadastroproposta' %}">Nova Proposta</a>
-                  <a class="dropdown-item" href="#">Salvar</a>
-                  <a class="dropdown-item" href="#">Imprimir</a>
+                  <a class="dropdown-item" href="#" >Imprimir</a>
                     <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="window. close()">Fechar</a>
+                  <a class="dropdown-item" href="Window. close()">Fechar</a>
                 </div>
             </li>         
               <li class="nav-item dropdown">
@@ -67,7 +64,29 @@
           </ul>
         </div>
     </nav>
+
+    <!-- Modais -->
+    <div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-body">                         
+                        <form action="/cadastroempresa/" method="post">
+                            {% csrf_token %}
+                            <label for="Nome">Nome da empresa: </label>
+                            <input id="nome" type="text" name="nome" value="{{ current_nome }}">
+                            <input type="submit" value="OK">
+                        </form>                                                                                   
+                    </div>
+                </div>                                
+            </div>
+        </div>
     </div>
+    
+   
+
+
+    
     <div class="container-md  style=" >
         <div class="row g-0 p-0"  >
             <div class="col-1.1 p-0">
@@ -140,10 +159,8 @@
                                                                                                         <a
                                                                                                             class="list-group list-group-flush"
                                                                                                             data-toggle="collapse"
-
-                                                                                                            href="#collapse-{{empresa.id}}-{{area.id}}-{{tag.id}}-{{componente.id}}-{{proposta.id}}"
+                                                                                                            href=""
                                                                                                             role="button"
-
                                                                                                             aria-expanded="false"
                                                                                                             aria-controls="collapse-{{empresa.id}}-{{area.id}}-{{tag.id}}-{{componente.id}}-{{proposta.id}}"
 
@@ -230,6 +247,12 @@
                                     </div>  
                                 </div>          
                             </div>
+                            
+                                
+                                
+                                                                                                                       
+
+
                         </div>
                         <div class="tab-pane fade pt-0" id="nav-a" role="tabpanel" aria-labelledby="nav-a-tab">
                             <div class="container-md">
@@ -364,7 +387,7 @@
                                         <div class="form-group row" style="height: 25px";>
                                             <div class="form-check">
                                                 <input class="form-check-input ml-1" type="checkbox" value="" id="contvapor">
-                                                <label class="form-check-label ml-4" for="contvapor">
+                                                <label class="form-check-label ml-4" for="flexCheckDefault">
                                                     Vazamento de Vapor (no traço) ou contato com vapor
                                                 </label>
                                             </div>
@@ -671,7 +694,7 @@
                                                 <div class="form-group row" style="height: 25px";>
                                                     <label for="tolccad" class="col-sm-5 col-form-label">Tolerância de corrosão c/CAD (mm)</label>
                                                     <div class="col-sm-3">
-                                                        <input type="text" class="form-control" id="tolccad" placeholder="">
+                                                        <input type="text" class="form-control" id="tolccad" placeholder="" onblur="calcular();">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row" style="height: 25px";>
@@ -683,7 +706,7 @@
                                                 <div class="form-group row" style="height: 25px";>
                                                     <label for="txcorclad" class="col-sm-5 col-form-label">Taxa de corrosão para o CLAD (mm/ano)</label>
                                                     <div class="col-sm-3">
-                                                        <input type="text" class="form-control" id="txcorclad" placeholder="">
+                                                        <input type="text" class="form-control" id="txcorclad" placeholder="" onblur="calcular();">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row" style="height: 25px";>                                                 
@@ -695,7 +718,7 @@
                                                 <div class="form-group row" style="height: 25px";>                                                 
                                                     <label for="agerc" class="col-sm-5 col-form-label">agerc (é a vida útil da cobertura de revest./soldag. associada à data da espes. inicial)</label>
                                                     <div class="col-sm-3">
-                                                        <input type="text" class="form-control" id="agerc" placeholder="">
+                                                        <input type="text" class="form-control" id="agerc" placeholder="" onblur="calcular();">
                                                     </div>
                                                 </div>
                                             </div>
@@ -749,7 +772,9 @@
                                                 <span id="resultado27"></span><br>
                                                 <span></span> 28 </span><span id="resultado28"></span><br>
                                                 <span></span> 29 </span><span id="resultado29"></span><br>
-                                                <span></span> 30 </span><span id="resultado30"></span><br>        
+                                                <span></span> 30 </span><span id="resultado30"></span><br>
+                                                
+                                                        
                                             </div>
                                          </div>
                                     </div>
@@ -820,18 +845,34 @@
                                                             <div class="form-group row" style="height: 25px";>
                                                                 <label for="connaoh" class="col-sm-5 col-form-label">Concentração de NaOH(%)</label>
                                                                 <div class="col-sm-3">
-                                                                    <input type="text" class="form-control" id="connaoh" placeholder="">
+                                                                    <input type="text" class="form-control" id="connaoh" placeholder="" onblur="calcular();">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row pt-0" style="height: 25px";>
                                                                 <label for="areacurva" class="col-sm-5 col-form-label">Área A, B ou C, conforme Figura 6.1M</label>
                                                                 <div class="col-sm-3">
-                                                                    <select class="form-control form-control-2g" id="areacurva">
+                                                                    <select class="form-control form-control-2g" id="areacurva" onblur="calcular();">
                                                                         <option>A</option>
                                                                         <option>B</option>
                                                                         <option>C</option>
                                                                     </select>
                                                                 </div> 
+                                                            </div>
+
+                                                            <div class="col-7 p-3">                                                             
+                                                                <span><b>Cálculo:</b></span><br>   
+                                                                <span id="resultado31"></span><br>
+                                                                <span id="resultado32"></span><br>
+                                                                <span id="resultado33"></span><br>
+                                                                <span id="resultado34"></span><br>
+                                                                <span id="resultado35"></span><br>
+                                                                <span id="resultado36"></span><br>
+                                                                <span id="resultado37"></span><br>
+                                                                <span id="resultado38"></span><br>
+                                                                <span>Suceptibilidade =</span><br>
+                                                                <span>Índice de severidade =</span><br>
+                                                                <span>Valor de dano base por trincamento (Dcausticfb) =</span><br>
+                                                                <span><b>Dano (Dcausticf) = Dcausticfb * (Max (age,1,0)^1,1) =</b></span><br>                                                                    
                                                             </div>
                                                         </div> 
                                                     </div> 
@@ -860,10 +901,33 @@
                                                                     </select>
                                                                 </div> 
                                                             </div>
+
+                                                            <div class="col-7 p-3">                                                             
+                                                                <span><b>Cálculo:</b></span><br>   
+                                                                <span id="resultado39"></span><br>
+                                                                <span id="resultado40"></span><br>
+                                                                <span id="resultado41"></span><br>
+                                                                <span id="resultado42"></span><br>
+                                                                <span id="resultado43"></span><br>
+                                                                <span id="resultado44"></span><br>
+                                                                <span id="resultado45"></span><br>
+                                                                <span id="resultado46"></span><br>
+                                                                <span>Suceptibilidade =</span><br>
+                                                                <span>Índice de severidade =</span><br>
+                                                                <span>Valor de dano base por trincamento (Daminefb) =</span><br>
+                                                                <span><b>Dano (Daminef) = Daminefb * (Max (age,1,0)^1,1) =</b></span><br>   
+                                                                                                                                
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+
+                                                            
+
+
+
+
                                             <div class="tab-pane fade" id="nav-e33" role="tabpanel" aria-labelledby="nav-e33-tab">
                                                 <div class="container-md">
                                                     <div class="row g-0 p-0">
@@ -1802,7 +1866,7 @@
                                             <div class="col-8 p-3">
                                                 <div class="form-group row pt-0" style="height: 25px";>
                                                     Probabilidade<br>
-                                                    Probabilidade<br>                                                                                                          
+                                                                                                                                                         
                                                 </div>                                                                                                  
                                             </div> 
                                         </div>              
@@ -1814,10 +1878,7 @@
                                             <div class="col-8 p-3">
                                                 <div class="form-group row pt-0" style="height: 25px";>
                                                     Consequência<br>
-                                                    Consequência<br>
-                                                    Consequência<br>   
-                                                    Consequência<br>   
-                                                    Consequência<br>                                                   
+                                                                                                       
                                                 </div> 
                                             </div> 
                                         </div> 
@@ -1828,9 +1889,11 @@
                                         <div class="row g-0 p-0">
                                             <div class="col-8 p-3">
                                                 <div class="form-group row pt-0" style="height: 25px";>
-                                                    <label for="linning" class="col-sm-3 col-form-label">Risco</label>
-                                                        <a href="#"><img src="{% static '/imagens/Matrix.bmp' %}" width="500px"></a>
+                                                        <label for="linning" class="col-sm-3 col-form-label">Risco</label>                                                    
                                                 </div> 
+                                                <div>
+                                                    <a href="#"><img src="{% static '/imagens/Matrix.bmp' %}" width="500px"></a>
+                                                </div>
                                             </div> 
                                         </div> 
                                     </div> 
