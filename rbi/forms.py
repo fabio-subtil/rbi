@@ -61,5 +61,7 @@ class cadastropropostaForm(forms.Form):
         TAGP.save()
         return TAGP
     
+
+    
     
         

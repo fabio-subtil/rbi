@@ -1,6 +1,7 @@
 
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
 from rbi.views import Index_view, Cadastroempresa_view, Cadastroarea_view, Cadastroequip_view, Cadastroproposta_view, Cadastrocomponente_view, Updatempresa_UpdateView, Detailempresa_DetailView
 from accounts.views import register_view, login_view
 
@@ -8,7 +9,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', register_view, name='register'),
     path('login/', login_view, name='login'),
-    
     
     
     path('index/', Index_view.as_view(), name='index'),

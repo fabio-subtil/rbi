@@ -4,27 +4,24 @@ from rbi.forms import cadastroempresaForm, cadastroareaForm, cadastroequipForm, 
 from django.views import View
 from django.views.generic import  UpdateView, DeleteView, DetailView
 
-
 class Index_view(View):
    def get(self, request):
       empresas = Empresa.objects.all()
       context = {"rbi": empresas}
       return render(request, "index.html", context=context)
-   
-
-  
+     
 class Cadastroempresa_view(View):
    def get(self, request):
       cadastroempresa_form = cadastroempresaForm()
       return render (request, 'cadastroempresa.html', {'cadastroempresa_form': cadastroempresa_form})
+   
    def post(self, request):
       cadastroempresa_form = cadastroempresaForm(request.POST, request.FILES)
       if cadastroempresa_form.is_valid():
          cadastroempresa_form.save()
          return redirect("index")
       return render(request, 'cadastroempresa.html', {'cadastroempresa_form': cadastroempresa_form})
-
-
+   
 class Detailempresa_DetailView(DetailView):
    model = Empresa
    form_class = cadastroempresaForm
@@ -41,7 +38,6 @@ class deletempresa_deleteView(DeleteView):
    form_class = cadastroempresaForm
    template_name = 'deletempresa.html'
    success_url = '/rbi/'
-
 
 class Cadastroarea_view(View):
    def get(self, request):
@@ -84,3 +80,7 @@ class Cadastroproposta_view(View):
       if cadastroproposta_form.is_valid():
         cadastroproposta_form.save()
         return redirect("index")
+      
+
+      
+

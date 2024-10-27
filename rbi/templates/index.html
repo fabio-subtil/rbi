@@ -1,16 +1,21 @@
 {% extends "base.html" %}
 
 {% load static %}
+
 {% block rbi %}
+
   <head>
     
     <!-- Meta tags Obrigatórias -->
    
     <script src="{% static 'index.js' %}" defer></script>
-    <link href="index.css" rel="stylesheet" type="text/css">
+    <link href="{% static 'index.css' %}" rel="stylesheet" type="text/css" media="screen" >
 
   </head>
   <body>
+
+     <!-- Menu superior -->
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">    
         <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
           <ul class="navbar-nav mr-auto">
@@ -19,15 +24,15 @@
                   Cadastro
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#Modal1">Nova Empresa</a>                         
-                  <a class="dropdown-item" href="{% url 'cadastroarea' %}">Nova Área</a>
+                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#Modal1">Nova Empresa</a>
+                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#Modal2">Nova Área</a>                   
+                  <!--<a class="dropdown-item" href="{% url 'cadastroarea' %}">Nova Área</a>-->
                   <a class="dropdown-item" href="{% url 'cadastroequip' %}">Novo Equipamento</a>
                   <a class="dropdown-item" href="{% url 'cadastrocomponente' %}">Novo Componente</a>
                   <a class="dropdown-item" href="{% url 'cadastroproposta' %}">Nova Proposta</a>
-                  <a class="dropdown-item" href="#" >Imprimir</a>
                     <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="Window. close()">Fechar</a>
-                </div>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#Modal2">Fluídos</a>
+                    </div>
             </li>         
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -66,6 +71,7 @@
     </nav>
 
     <!-- Modais -->
+
     <div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -82,16 +88,52 @@
             </div>
         </div>
     </div>
-    
-   
+
+    <div class="modal fade" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-body">                         
+                        <form method="post" action="cadastroarea" enctype="multipart/form-data" height="100px" width="auto">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-primary">Salvar</button>
+                        </form>                                                                                   
+                    </div>
+                </div>                                
+            </div>
+        </div>
+    </div>
 
 
+
+
+
+    <div class="modal fade" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-body">                         
+                        
+                        <p>Table 6.1M Fluids and Fluid Properties for AST Consequence Analysis</p>
+                        <p>Table 3.A.3.1 List of Representative Fluids Available for Level 1 Consequence Methodology</p>
+                        
+
+                    </div>
+                </div>                                
+            </div>
+        </div>
+    </div>
     
+
     <div class="container-md  style=" >
         <div class="row g-0 p-0"  >
             <div class="col-1.1 p-0">
-                <div class="card">                  
-                        <div class="card-header">Navegação</div>
+                <div class="card">    
+                                 
+<!-- Seção de navegação - Explore -->
+
+                    <div class="card-header">Navegação</div>
                         <div class="card-body">
                             <ul class="list-group list-group-flush">
                                 {% for empresa in rbi %}
@@ -186,8 +228,11 @@
                                 {% endfor %}
                             </ul> 
                         </div>
+                    </div>
                 </div>
-            </div>
+
+<!-- Seções de ABAS de input´s -->
+
             <div class="col-10 p-0">
                     <nav>
                         <div class="nav nav-tabs pt-1" id="nav-tab" role="tablist" style="height: 30px">
@@ -202,49 +247,63 @@
                         </div>
                     </nav>
                     <div class="tab-content p-1 shadow p-3 mb-3 bg-white rounded" style="width: 1300px "; style="height: 600px"; id="nav-tabContent"> 
+                        
+<!-- Seção ABA Equipamento -->
+
                         <div class="tab-pane fade show active pt-0" id="nav-a0" role="tabpanel" aria-labelledby="nav-a0tab">  
                             <div class="container-md">
                                 <div class="row g-0 p-0">  
-                                    <div class="col-6 p-3">                                                                                                            
-                                        <div class="form-group row pt-0 mb-3" style="height: 25px";>
-                                            <label for="tagequip" class="col-sm-5 col-form-label pt-0"  >Tag do equipamento</label>
-                                            <div class="col-sm-5 p-0" >
-                                                <input type="text" class="form-control col-form-label"  id="tagequip" placeholder="">
+                                    <div class="col-6 p-3">
+
+                                        <form action="/your-name/" method="post">
+                                        
+                                            <div class="form-group row pt-0 mb-3" style="height: 25px";>
+                                                <label for="tagequip" class="col-sm-5 col-form-label pt-0"  >Tag do equipamento</label>
+                                                <div class="col-sm-5 p-0" >
+                                                    <input type="text" class="form-control col-form-label"  id="tagequip" placeholder="">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row pt-0" style="height: 25px";>
-                                            <label for="tipoequip" class="col-sm-5 col-form-label pt-0">Tipo de equipamento</label>
-                                            <div class="col-sm-5 col-form-label p-0" >
-                                                <select id="tipoequip" class="form-control form-control-2g" >
-                                                    <option>Compressor</option>
-                                                    <option>Trocador de calor</option>
-                                                    <option>Tubulação</option>
-                                                    <option>Bomba</option>
-                                                    <option>Tanque API 650 (fundo)</option>
-                                                    <option>Tanque API 650 (costado)</option>
-                                                    <option>Vaso de pressão</option>
-                                                </select>
+                                            <div class="form-group row pt-0" style="height: 25px";>
+                                                <label for="tipoequip" class="col-sm-5 col-form-label pt-0">Tipo de equipamento</label>
+                                                <div class="col-sm-5 col-form-label p-0" >
+                                                    <select id="tipoequip" class="form-control form-control-2g" >
+                                                        <option>Compressor</option>
+                                                        <option>Trocador de calor</option>
+                                                        <option>Tubulação</option>
+                                                        <option>Bomba</option>
+                                                        <option>Tanque API 650 (fundo)</option>
+                                                        <option>Tanque API 650 (costado)</option>
+                                                        <option>Vaso de pressão</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row pt-0" style="height: 25px";>
-                                            <label for="nomeequip" class="col-sm-5 col-form-label pt-0">Nome do equipamento</label>
-                                            <div class="col-sm-5 col-form-label p-0" >
-                                                <input type="text" class="form-control col-form-label" id="nomeequip" placeholder="">
+                                            <div class="form-group row pt-0" style="height: 25px";>
+                                                <label for="nomeequip" class="col-sm-5 col-form-label pt-0">Nome do equipamento</label>
+                                                <div class="col-sm-5 col-form-label p-0" >
+                                                    <input type="text" class="form-control col-form-label" id="nomeequip" placeholder="">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row pt-0" style="height: 25px";>
-                                            <label for="volumeequip" class="col-sm-5 col-form-label">Volume do equipamento (m&sup3)</label>
-                                            <div class="col-sm-5 col-form-label p-0">
-                                                <input type="text" class="form-control col-form-label" id="volumeequip" placeholder="">
+                                            <div class="form-group row pt-0" style="height: 25px";>
+                                                <label for="volumeequip" class="col-sm-5 col-form-label">Volume do equipamento (m&sup3)</label>
+                                                <div class="col-sm-5 col-form-label p-0">
+                                                    <input type="text" class="form-control col-form-label" id="volumeequip" placeholder="">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row pt-0" style="height: 25px";>  
-                                            <label for="descproc" class="col-sm-5 col-form-label pt-0">Descrição do processo</label>
-                                            <div class="col-sm-5 col-form-label p-0" >
-                                            <textarea input type="text" class="form-control col-form-label" id="descproc" ></textarea>
+                                            <div class="form-group row pt-0" style="height: 25px";>  
+                                                <label for="descproc" class="col-sm-5 col-form-label pt-0">Descrição do processo</label>
+                                                <div class="col-sm-5 col-form-label p-0" >
+                                                <textarea input type="text" class="form-control col-form-label" id="descproc" ></textarea>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>  
+                                            <div class="form-group row pt-0" style="height: 25px";>
+                                                <label for="dataavaliacao" class="col-sm-5 col-form-label pt-0" >Data do comissionamento</label>
+                                                <div class="col-sm-5 p-0">
+                                                    <input type="date" class="form-control col-form-label pt-0" id="datacomis" placeholder="">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    
+                                    </div>
                                 </div>          
                             </div>
                             
@@ -254,6 +313,9 @@
 
 
                         </div>
+
+<!-- Seção ABA Componente -->
+
                         <div class="tab-pane fade pt-0" id="nav-a" role="tabpanel" aria-labelledby="nav-a-tab">
                             <div class="container-md">
                                 <div class="row g-0 p-0">  
@@ -347,7 +409,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>  
+                        </div>
+<!-- Seção ABA Condições operacionais -->
+
                         <div class="tab-pane fade p-0" id="nav-b" role="tabpanel" aria-labelledby="nav-b-tab">       
                             <div class="container-md">
                                 <div class="row g-0 p-0">  
@@ -437,6 +501,9 @@
                                 </div>
                             </div>
                         </div>
+
+<!-- Seção ABA dados -->
+
                         <div class="tab-pane fade p-0" id="nav-c" role="tabpanel" aria-labelledby="nav-c-tab">  
                             <div class="container-md">
                                 <div class="row g-0 p-0">  
@@ -585,6 +652,9 @@
                                     </div>
                                  </div>
                         </div>
+
+<!-- Seção ABA Consequência -->
+
                         <div class="tab-pane fade p-0" id="nav-d" role="tabpanel" aria-labelledby="nav-d-tab">                                       
                             <nav>
                                 <div class="nav nav-tabs pt-1" id="nav-tab" role="tablist" style="height: 30px">
@@ -646,7 +716,10 @@
                                     </div> 
                                 </div> 
                             </div>
-                        </div>                                              
+                        </div>
+                        
+<!-- Seção ABA Mecanismos de dano -->
+
                         <div class="tab-pane fade p-0" id="nav-e" role="tabpanel" aria-labelledby="nav-e-tab">
                             <nav>
                                 <div class="nav nav-tabs pt-1" id="nav-tab" role="tablist" style="height: 30px">
@@ -660,6 +733,9 @@
                                  </div>
                             </nav>
                             <div class="tab-content p-3" id="nav-tabContent">
+
+<!-- Seção ABA Mecanismos de dano (S4) Perda de espessura -->
+
                                 <div class="tab-pane fade show active" id="nav-e1" role="tabpanel" aria-labelledby="nav-e1-tab">       
                                     <div class="container-md">
                                         <div class="row g-0 p-0">
@@ -779,6 +855,8 @@
                                          </div>
                                     </div>
                                 </div>
+<!-- Seção ABA Mecanimos de dano (S5) Comp. com linning -->
+
                                 <div class="tab-pane fade" id="nav-e2" role="tabpanel" aria-labelledby="nav-e2-tab">
                                     <div class="container-md">
                                         <div class="row g-0 p-0">
@@ -815,6 +893,29 @@
                                                     </select>
                                                 </div> 
                                             </div>
+
+                                            <div class="col-7 p-3">                                                             
+                                                <span><b>Cálculo:</b></span><br>   
+                                                <span id="resultado39"></span><br>
+                                                <span id="resultado40"></span><br>
+                                                <span id="resultado41"></span><br>
+                                                <span id="resultado42"></span><br>
+                                                <span id="resultado43"></span><br>
+                                                <span id="resultado44"></span><br>
+                                                <span id="resultado45"></span><br>
+                                                <span id="resultado46"></span><br>
+                                                <span>Suceptibilidade =</span><br>
+                                                <span>Índice de severidade =</span><br>
+                                                <span>Valor de dano base por trincamento (D_ELINfb) =</span><br>
+                                                <span><b>Dano (D_ELINf) = D_ELINfb * (Max (age,1,0)^1,1) =</b></span><br>   
+                                                                                                                
+                                            </div>
+
+
+
+
+
+
                                         </div>
                                             <div class="col-4 p-3"> 
                                                 <div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; agent=\&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36\&quot; version=\&quot;24.7.12\&quot;&gt;\n  &lt;diagram name=\&quot;Page-1\&quot; id=\&quot;edf60f1a-56cd-e834-aa8a-f176f3a09ee4\&quot;&gt;\n    &lt;mxGraphModel dx=\&quot;1079\&quot; dy=\&quot;447\&quot; grid=\&quot;1\&quot; gridSize=\&quot;10\&quot; guides=\&quot;1\&quot; tooltips=\&quot;1\&quot; connect=\&quot;1\&quot; arrows=\&quot;1\&quot; fold=\&quot;1\&quot; page=\&quot;1\&quot; pageScale=\&quot;1\&quot; pageWidth=\&quot;1100\&quot; pageHeight=\&quot;850\&quot; background=\&quot;none\&quot; math=\&quot;0\&quot; shadow=\&quot;0\&quot;&gt;\n      &lt;root&gt;\n        &lt;mxCell id=\&quot;0\&quot; /&gt;\n        &lt;mxCell id=\&quot;1\&quot; parent=\&quot;0\&quot; /&gt;\n        &lt;mxCell id=\&quot;DCbc7HNY3uvMJjkibcHQ-19\&quot; value=\&quot;\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;align=left;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;300\&quot; y=\&quot;410\&quot; width=\&quot;360\&quot; height=\&quot;230\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;DCbc7HNY3uvMJjkibcHQ-15\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot; source=\&quot;DCbc7HNY3uvMJjkibcHQ-1\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;280\&quot; y=\&quot;340\&quot; as=\&quot;targetPoint\&quot; /&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;DCbc7HNY3uvMJjkibcHQ-1\&quot; value=\&quot;Tipo de Lining\&quot; style=\&quot;shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;100\&quot; y=\&quot;240\&quot; width=\&quot;140\&quot; height=\&quot;50\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;DCbc7HNY3uvMJjkibcHQ-13\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot; source=\&quot;DCbc7HNY3uvMJjkibcHQ-2\&quot; target=\&quot;DCbc7HNY3uvMJjkibcHQ-5\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;280\&quot; y=\&quot;345\&quot; as=\&quot;targetPoint\&quot; /&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;DCbc7HNY3uvMJjkibcHQ-2\&quot; value=\&quot;Anos desde a&amp;lt;div&amp;gt;inspeção&amp;lt;div&amp;gt;(ref. Tabela 2.C.6.1)&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;\&quot; style=\&quot;shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;100\&quot; y=\&quot;320\&quot; width=\&quot;140\&quot; height=\&quot;50\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;DCbc7HNY3uvMJjkibcHQ-14\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot; source=\&quot;DCbc7HNY3uvMJjkibcHQ-3\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;280\&quot; y=\&quot;350\&quot; as=\&quot;targetPoint\&quot; /&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;DCbc7HNY3uvMJjkibcHQ-3\&quot; value=\&quot;Para pinturas&amp;lt;div&amp;gt;orgânicas,&amp;lt;div&amp;gt;anos em serviço&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;\&quot; style=\&quot;shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;100\&quot; y=\&quot;400\&quot; width=\&quot;140\&quot; height=\&quot;50\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;DCbc7HNY3uvMJjkibcHQ-16\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot; source=\&quot;DCbc7HNY3uvMJjkibcHQ-4\&quot; target=\&quot;DCbc7HNY3uvMJjkibcHQ-5\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;DCbc7HNY3uvMJjkibcHQ-4\&quot; value=\&quot;PASSO 1: Determine o tipo de&amp;lt;div&amp;gt;Lining e tempo em serviço&amp;lt;/div&amp;gt;\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;370\&quot; y=\&quot;200\&quot; width=\&quot;210\&quot; height=\&quot;50\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;DCbc7HNY3uvMJjkibcHQ-17\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot; source=\&quot;DCbc7HNY3uvMJjkibcHQ-5\&quot; target=\&quot;DCbc7HNY3uvMJjkibcHQ-6\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;DCbc7HNY3uvMJjkibcHQ-5\&quot; value=\&quot;PASSO 2: Determine o valor base do fator de dano do Lining, usando as tabelas 5.4 e 5.5\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;340\&quot; y=\&quot;315\&quot; width=\&quot;270\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;DCbc7HNY3uvMJjkibcHQ-18\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot; source=\&quot;DCbc7HNY3uvMJjkibcHQ-6\&quot; target=\&quot;DCbc7HNY3uvMJjkibcHQ-7\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;DCbc7HNY3uvMJjkibcHQ-6\&quot; value=\&quot;Determine os fatores de ajuste:&amp;lt;div&amp;gt;- Condição do Lining&amp;lt;/div&amp;gt;&amp;lt;div&amp;gt;- Monitoramento on-line&amp;lt;/div&amp;gt;\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;340\&quot; y=\&quot;440\&quot; width=\&quot;270\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;DCbc7HNY3uvMJjkibcHQ-7\&quot; value=\&quot;Determine o fator de dano para&amp;amp;nbsp;&amp;lt;span style=&amp;quot;background-color: initial;&amp;quot;&amp;gt;o&amp;amp;nbsp;&amp;lt;/span&amp;gt;&amp;lt;div&amp;gt;&amp;lt;span style=&amp;quot;background-color: initial;&amp;quot;&amp;gt;Lining usando a equação (2.24)&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt;\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;340\&quot; y=\&quot;540\&quot; width=\&quot;270\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;DCbc7HNY3uvMJjkibcHQ-21\&quot; value=\&quot;Passo 3\&quot; style=\&quot;text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;300\&quot; y=\&quot;410\&quot; width=\&quot;60\&quot; height=\&quot;30\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n      &lt;/root&gt;\n    &lt;/mxGraphModel&gt;\n  &lt;/diagram&gt;\n&lt;/mxfile&gt;\n&quot;}"></div>
@@ -823,6 +924,9 @@
                                     </div>  
                                 </div>      
                             </div>
+
+<!-- Seção ABA Mecanimos de dano (S6-14) SCC-->
+
                                 <div class="tab-pane fade" id="nav-e3" role="tabpanel" aria-labelledby="nav-e3-tab">   
                                         <nav>
                                             <div class="nav nav-tabs pt-1" id="nav-tab" role="tablist" style="height: 50px">
@@ -837,7 +941,11 @@
                                                 <a class="nav-item nav-link shadow p-3 mb-5 bg-warning text-white rounded" style="height: 40px" id="nav-e39-tab" data-toggle="tab" href="#nav-e39" role="tab" aria-controls="nav-e39" aria-selected="false">(S14) HICSO/HICHF</a> 
                                             </div>
                                         </nav>
+
                                         <div class="tab-content" id="nav-tabContent">
+
+<!-- Seção ABA Mecanimos de dano (S6) SCC-CAUSTIC-->
+
                                             <div class="tab-pane fade show active" id="nav-e31" role="tabpanel" aria-labelledby="nav-e31-tab">                                           
                                                 <div class="container-md">
                                                     <div class="row g-0 p-0">
@@ -878,6 +986,9 @@
                                                     </div> 
                                                 </div> 
                                             </div>
+
+<!-- Seção ABA Mecanimos de dano (S7) SCC-AMINA-->
+
                                             <div class="tab-pane fade" id="nav-e32" role="tabpanel" aria-labelledby="nav-e32-tab">
                                                 <div class="container-md">
                                                     <div class="row g-0 p-0">
@@ -912,6 +1023,7 @@
                                                                 <span id="resultado44"></span><br>
                                                                 <span id="resultado45"></span><br>
                                                                 <span id="resultado46"></span><br>
+                                                                <span id="resultado47"></span><br>
                                                                 <span>Suceptibilidade =</span><br>
                                                                 <span>Índice de severidade =</span><br>
                                                                 <span>Valor de dano base por trincamento (Daminefb) =</span><br>
@@ -923,10 +1035,7 @@
                                                 </div>
                                             </div>
 
-                                                            
-
-
-
+<!-- Seção ABA Mecanimos de dano (S8) SCC-->
 
                                             <div class="tab-pane fade" id="nav-e33" role="tabpanel" aria-labelledby="nav-e33-tab">
                                                 <div class="container-md">
@@ -962,10 +1071,34 @@
                                                                     Presença de cianeto  
                                                                 </label>
                                                             </div>
+
+
+                                                            <div class="col-7 p-3">                                                             
+                                                                <span><b>Cálculo:</b></span><br>   
+                                                                <span id="resultado39"></span><br>
+                                                                <span id="resultado40"></span><br>
+                                                                <span id="resultado41"></span><br>
+                                                                <span id="resultado42"></span><br>
+                                                                <span id="resultado43"></span><br>
+                                                                <span id="resultado44"></span><br>
+                                                                <span id="resultado45"></span><br>
+                                                                <span id="resultado46"></span><br>
+                                                                <span>Suceptibilidade =</span><br>
+                                                                <span>Índice de severidade =</span><br>
+                                                                <span>Valor de dano base por trincamento (DSCCfb) =</span><br>
+                                                                <span><b>Dano (DSCCf) = DSCCfb * (Max (age,1,0)^1,1) =</b></span><br>   
+                                                                                                                                
+                                                            </div>
+
+
+
                                                         </div>
                                                     </div>
                                                 </div>                                               
                                             </div>
+
+<!-- Seção ABA Mecanimos de dano (S9) SCC-HISONICH2-->
+
                                             <div class="tab-pane fade" id="nav-e34" role="tabpanel" aria-labelledby="nav-e34-tab">                                                 
                                                 <div class="container-md">
                                                     <div class="row g-0 p-0">
@@ -976,10 +1109,31 @@
                                                                         Existe trinca
                                                                 </label>
                                                             </div>
+
+                                                            <div class="col-7 p-3">                                                             
+                                                                <span><b>Cálculo:</b></span><br>   
+                                                                <span id="resultado39"></span><br>
+                                                                <span id="resultado40"></span><br>
+                                                                <span id="resultado41"></span><br>
+                                                                <span id="resultado42"></span><br>
+                                                                <span id="resultado43"></span><br>
+                                                                <span id="resultado44"></span><br>
+                                                                <span id="resultado45"></span><br>
+                                                                <span id="resultado46"></span><br>
+                                                                <span>Suceptibilidade =</span><br>
+                                                                <span>Índice de severidade =</span><br>
+                                                                <span>Valor de dano base por trincamento (D_HIC_SONICfb) =</span><br>
+                                                                <span><b>Dano (D_HIC_SONICf) = D_HIC_SONICfb * (Max (age,1,0)^1,1) =</b></span><br>   
+                                                                                                                                
+                                                            </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+
+<!-- Seção ABA Mecanimos de dano (S10) SCC-ACSCC-->
+
                                             <div class="tab-pane fade" id="nav-e35" role="tabpanel" aria-labelledby="nav-e35-tab">                  
                                                 <div class="container-md">
                                                     <div class="row g-0 p-0">
@@ -990,10 +1144,30 @@
                                                                         <input type="text" class="form-control" id="conco3" placeholder="">
                                                                 </div>
                                                             </div>
+
+                                                            <div class="col-7 p-3">                                                             
+                                                                <span><b>Cálculo:</b></span><br>   
+                                                                <span id="resultado39"></span><br>
+                                                                <span id="resultado40"></span><br>
+                                                                <span id="resultado41"></span><br>
+                                                                <span id="resultado42"></span><br>
+                                                                <span id="resultado43"></span><br>
+                                                                <span id="resultado44"></span><br>
+                                                                <span id="resultado45"></span><br>
+                                                                <span id="resultado46"></span><br>
+                                                                <span>Suceptibilidade =</span><br>
+                                                                <span>Índice de severidade =</span><br>
+                                                                <span>Valor de dano base por trincamento (D_ACSCCfb) =</span><br>
+                                                                <span><b>Dano (D_ACSCCf) = D_ACSCCfb * (Max (age,1,0)^1,1) =</b></span><br>   
+                                                                                                                                
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>                       
+                                            </div>
+                                            
+<!-- Seção ABA Mecanimos de dano (S11) SCC-PACSCC-->                                           
+
                                             <div class="tab-pane fade" id="nav-e36" role="tabpanel" aria-labelledby="nav-e36-tab">
                                                 <div class="container-md">
                                                     <div class="row g-0 p-0">
@@ -1015,11 +1189,32 @@
                                                                 <label class="form-check-label ml-4" for="expoh2o">
                                                                     Exposição a H2O durante a operação
                                                                 </label>
-                                                            </div>  
+                                                            </div> 
+                                                            
+                                                            <div class="col-7 p-3">                                                             
+                                                                <span><b>Cálculo:</b></span><br>   
+                                                                <span id="resultado39"></span><br>
+                                                                <span id="resultado40"></span><br>
+                                                                <span id="resultado41"></span><br>
+                                                                <span id="resultado42"></span><br>
+                                                                <span id="resultado43"></span><br>
+                                                                <span id="resultado44"></span><br>
+                                                                <span id="resultado45"></span><br>
+                                                                <span id="resultado46"></span><br>
+                                                                <span>Suceptibilidade =</span><br>
+                                                                <span>Índice de severidade =</span><br>
+                                                                <span>Valor de dano base por trincamento (D_PACSCCfb) =</span><br>
+                                                                <span><b>Dano (D_PACSCCf) = D_PACSCCfb * (Max (age,1,0)^1,1) =</b></span><br>   
+                                                                                                                                
+                                                            </div>
+
                                                         </div>
                                                     </div>
                                                 </div>                                             
                                             </div>
+
+<!-- Seção ABA Mecanimos de dano (S12) SCC-CLSCC-->
+
                                             <div class="tab-pane fade" id="nav-e37" role="tabpanel" aria-labelledby="nav-e37-tab">
                                                 <div class="container-md">
                                                     <div class="row g-0 p-0">
@@ -1036,10 +1231,30 @@
                                                                     Aço inox austenítico
                                                                 </label>
                                                             </div>
+                                                            <div class="col-7 p-3">                                                             
+                                                                <span><b>Cálculo:</b></span><br>   
+                                                                <span id="resultado39"></span><br>
+                                                                <span id="resultado40"></span><br>
+                                                                <span id="resultado41"></span><br>
+                                                                <span id="resultado42"></span><br>
+                                                                <span id="resultado43"></span><br>
+                                                                <span id="resultado44"></span><br>
+                                                                <span id="resultado45"></span><br>
+                                                                <span id="resultado46"></span><br>
+                                                                <span>Suceptibilidade =</span><br>
+                                                                <span>Índice de severidade =</span><br>
+                                                                <span>Valor de dano base por trincamento (D_CLSCCfb) =</span><br>
+                                                                <span><b>Dano (D_CLSCCf) = D_CLSCCfb * (Max (age,1,0)^1,1) =</b></span><br>   
+                                                                                                                                
+                                                            </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>                                       
+                                            </div>
+                                            
+<!-- Seção ABA Mecanimos de dano (S13) SCC-HSCHF-->
+
                                             <div class="tab-pane fade" id="nav-e38" role="tabpanel" aria-labelledby="nav-e38-tab">
                                                 <div class="container-md">
                                                     <div class="row g-0 p-0">
@@ -1056,10 +1271,32 @@
                                                                     <input type="text" class="form-control" id="dureza" placeholder="">
                                                                 </div>
                                                             </div>
+
+                                                            <div class="col-7 p-3">                                                             
+                                                                <span><b>Cálculo:</b></span><br>   
+                                                                <span id="resultado39"></span><br>
+                                                                <span id="resultado40"></span><br>
+                                                                <span id="resultado41"></span><br>
+                                                                <span id="resultado42"></span><br>
+                                                                <span id="resultado43"></span><br>
+                                                                <span id="resultado44"></span><br>
+                                                                <span id="resultado45"></span><br>
+                                                                <span id="resultado46"></span><br>
+                                                                <span>Suceptibilidade =</span><br>
+                                                                <span>Índice de severidade =</span><br>
+                                                                <span>Valor de dano base por trincamento (D_HSCHFfb) =</span><br>
+                                                                <span><b>Dano (D_HSCHFf) = D_HSCHFfb * (Max (age,1,0)^1,1) =</b></span><br>   
+                                                                                                                                
+                                                            </div>
+
+
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>          
+                                            </div>
+                                            
+<!-- Seção ABA Mecanimos de dano (S14) SCC-HICSO/HICHF-->
+
                                             <div class="tab-pane fade" id="nav-e39" role="tabpanel" aria-labelledby="nav-e39-tab">
                                                 <div class="container-md">
                                                     <div class="row g-0 p-0">
@@ -1073,12 +1310,33 @@
                                                                     </select>
                                                                 </div> 
                                                             </div>
+
+                                                            <div class="col-7 p-3">                                                             
+                                                                <span><b>Cálculo:</b></span><br>   
+                                                                <span id="resultado39"></span><br>
+                                                                <span id="resultado40"></span><br>
+                                                                <span id="resultado41"></span><br>
+                                                                <span id="resultado42"></span><br>
+                                                                <span id="resultado43"></span><br>
+                                                                <span id="resultado44"></span><br>
+                                                                <span id="resultado45"></span><br>
+                                                                <span id="resultado46"></span><br>
+                                                                <span>Suceptibilidade =</span><br>
+                                                                <span>Índice de severidade =</span><br>
+                                                                <span>Valor de dano base por trincamento (D_HICSO/HICHFfb) =</span><br>
+                                                                <span><b>Dano (D_HICSO/HICHFf) = D_HICSO/HICHFfb * (Max (age,1,0)^1,1) =</b></span><br>   
+                                                                                                                                
+                                                            </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>                                      
+                                    </div>
+
+<!-- Seção ABA Mecanimos de dano (S6) SCC-CAUSTIC-->
+                                    
                                 <div class="tab-pane fade" id="nav-e4" role="tabpanel" aria-labelledby="nav-e4-tab">             
                                     <nav>
                                         <div class="nav nav-tabs pt-1" id="nav-tab" role="tablist" style="height: 50px">
@@ -1088,7 +1346,13 @@
                                             <a class="nav-item nav-link shadow p-3 mb-5 bg-primary text-white rounded" style="height: 40px" id="nav-e44-tab" data-toggle="tab" href="#nav-e44" role="tab" aria-controls="nav-e44" aria-selected="false">(S18) CUICLSCC</a>
                                         </div>
                                     </nav>
+
+<!-- Seção ABA Mecanimos de dano (S15-18) DANOS EXTERNOS-->
+
                                     <div class="tab-content" id="nav-tabContent">
+
+<!-- Seção ABA Mecanimos de dano (S15) EXT-->
+
                                         <div class="tab-pane fade show active" id="nav-e41" role="tabpanel" aria-labelledby="nav-e41-tab">
                                             <div class="container-md">
                                                 <div class="row g-0 p-0">
@@ -1168,6 +1432,9 @@
                                                 </div>
                                             </div>                                                                         
                                         </div>
+
+<!-- Seção ABA Mecanimos de dano (S16) CUIF-->
+
                                         <div class="tab-pane fade" id="nav-e42" role="tabpanel" aria-labelledby="nav-e32-tab">
                                             <div class="container-md">
                                                 <div class="row g-0 p-0">
@@ -1234,6 +1501,9 @@
                                                 </div>
                                             </div>
                                         </div>
+
+<!-- Seção ABA Mecanimos de dano (S17) EXTCLSCC-->
+
                                         <div class="tab-pane fade" id="nav-e43" role="tabpanel" aria-labelledby="nav-e33-tab">
                                             <div class="container-md">
                                                 <div class="row g-0 p-0">
@@ -1270,6 +1540,9 @@
                                                 </div>
                                             </div>                                            
                                         </div>
+
+<!-- Seção ABA Mecanimos de dano (S18) CUICLSCC-->
+
                                         <div class="tab-pane fade" id="nav-e44" role="tabpanel" aria-labelledby="nav-e34-tab">
                                             <div class="container-md">
                                                 <div class="row g-0 p-0">
@@ -1281,6 +1554,9 @@
                                         </div>
                                     </div>
                                 </div>
+
+<!-- Seção ABA Mecanimos de dano (S19) HTHA-->                               
+
                                 <div class="tab-pane fade" id="nav-e5" role="tabpanel" aria-labelledby="nav-e5-tab">
                                     <div class="container-md">
                                         <div class="row g-0 p-0">
@@ -1319,10 +1595,33 @@
                                                      </label>
                                                     </div>
                                                 </div>
+
+
+                                                <div class="col-7 p-3">                                                             
+                                                    <span><b>Cálculo:</b></span><br>   
+                                                    <span id="resultado39"></span><br>
+                                                    <span id="resultado40"></span><br>
+                                                    <span id="resultado41"></span><br>
+                                                    <span id="resultado42"></span><br>
+                                                    <span id="resultado43"></span><br>
+                                                    <span id="resultado44"></span><br>
+                                                    <span id="resultado45"></span><br>
+                                                    <span id="resultado46"></span><br>
+                                                    <span>Suceptibilidade =</span><br>
+                                                    <span>Índice de severidade =</span><br>
+                                                    <span>Valor de dano base por trincamento (D_HTHAfb) =</span><br>
+                                                    <span><b>Dano (D_HTHAf) = D_HTHAfb * (Max (age,1,0)^1,1) =</b></span><br>   
+                                                                                                                    
+                                                </div>
+
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
+<!-- Seção ABA Mecanimos de dano (S20-23) FRATURA FRÁGIL--> 
+
                                 <div class="tab-pane fade" id="nav-e6" role="tabpanel" aria-labelledby="nav-e6-tab">                                                             
                                     <nav>
                                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -1332,7 +1631,11 @@
                                             <a class="nav-item nav-link bg-secondary text-white" id="nav-e64-tab" data-toggle="tab" href="#nav-e64" role="tab" aria-controls="nav-e64" aria-selected="false">(S23) SIGMA</a>
                                         </div>
                                     </nav>
+                                    
                                     <div class="tab-content" id="nav-tabContent">
+
+<!-- Seção ABA Mecanimos de dano (S20) BRIT--> 
+
                                         <div class="tab-pane fade show active" id="nav-e61" role="tabpanel" aria-labelledby="nav-e61-tab">
                                             <div class="container-md">
                                                 <div class="row g-0 p-0">
@@ -1364,6 +1667,9 @@
                                                 </div>
                                             </div>
                                         </div>
+
+<!-- Seção ABA Mecanimos de dano (S21) TEMP--> 
+
                                         <div class="tab-pane fade" id="nav-e62" role="tabpanel" aria-labelledby="nav-e62-tab">
                                             <div class="container-md">
                                                 <div class="row g-0 p-0">
@@ -1438,7 +1744,10 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>                                        
+                                        </div>
+
+<!-- Seção ABA Mecanimos de dano (S22) 885F--> 
+                                        
                                         <div class="tab-pane fade" id="nav-e63" role="tabpanel" aria-labelledby="nav-e63-tab">                       
                                             <div class="container-md">
                                                 <div class="row g-0 p-0">
@@ -1453,6 +1762,9 @@
                                                 </div>
                                             </div>
                                         </div>
+
+<!-- Seção ABA Mecanimos de dano (S23) GIGMA--> 
+
                                         <div class="tab-pane fade" id="nav-e64" role="tabpanel" aria-labelledby="nav-e64-tab">
                                             <div class="container-md">
                                                 <div class="row g-0 p-0">
@@ -1474,6 +1786,9 @@
                                         </div>
                                     </div>
                                 </div>
+
+<!-- Seção ABA Mecanimos de dano (S24) FADIGA--> 
+                                
                                 <div class="tab-pane fade" id="nav-e7" role="tabpanel" aria-labelledby="nav-e7-tab">
                                     <div class="container-md">
                                         <div class="row g-0 p-0">
@@ -1557,6 +1872,9 @@
                                 </div>
                              </div>
                         </div>
+
+<!-- Seção ABA Históricos de inspeção-->
+
                         <div class="tab-pane fade p-3" id="nav-f" role="tabpanel" aria-labelledby="nav-f-tab">                      
                             <table class="table table-primary " style="width:97%">
                                 <thead>
@@ -1851,6 +2169,9 @@
                                 </tbody>
                             </table>
                         </div>
+
+<!-- Seção ABA Resultados-->
+
                         <div class="tab-pane fade p-0" id="nav-g" role="tabpanel" aria-labelledby="nav-g-tab">      
                             <nav>
                                 <div class="nav nav-tabs pt-1" id="nav-tab" role="tablist" style="height: 30px">
@@ -1906,10 +2227,6 @@
         </div> 
     </div>   
     
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  
 </body>
 
 {% endblock %}

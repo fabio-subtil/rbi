@@ -17,6 +17,9 @@ class Area(models.Model):
     nome = models.CharField(max_length=30, blank=True, null=True)
     empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE, related_name='areas')
     slug = models.SlugField(blank=True, null=True)
+
+    class Meta:
+        db_table = 'rbi_area'
     
     def __str__(self):
         return self.nome
@@ -69,6 +72,7 @@ class Abaequipamento(models.Model):
     numeroproposta = models.ForeignKey(Proposta, on_delete=models.CASCADE, related_name='tag_componente1', blank=True, null=True)
     tipoequipamento = models.CharField(max_length=20, blank=True, null=True)
     nomequipamento = models.CharField(max_length=20, blank=True, null=True)
+    volumeequip = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     descricaoprocesso = models.CharField(max_length=20, blank=True, null=True)
     
     def __str__(self):
@@ -153,7 +157,7 @@ class Abadadosgerais(models.Model):
     
 class Abavolumemassa(models.Model):
     numeroproposta = models.ForeignKey(Proposta, on_delete=models.CASCADE, related_name='tag_componente5', blank=True, null=True)
-    volumeequip = models.DecimalField(max_digits=10, decimal_places=2)
+    
     volumecomponente = models.DecimalField(max_digits=10, decimal_places=2)
     
     

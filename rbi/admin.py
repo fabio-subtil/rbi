@@ -22,7 +22,7 @@ class PropostaAdmin(admin.ModelAdmin):
     #search_fields = ('numeroproposta',)
 
 class AbaequipamentoAdmin(admin.ModelAdmin):
-    list_display = ('numeroproposta', 'tipoequipamento','nomequipamento', 'descricaoprocesso')
+    list_display = ('numeroproposta', 'tipoequipamento','nomequipamento', 'volumeequip','descricaoprocesso')
     #search_fields = ('tipoequipamento',)   
 
 class AbacomponenteAdmin(admin.ModelAdmin):
@@ -41,7 +41,7 @@ class AbadadosgeraisAdmin(admin.ModelAdmin):
 
 
 class AbavolumemassaAdmin(admin.ModelAdmin):
-    list_display = ('numeroproposta','volumeequip', 'volumecomponente')
+    list_display = ('numeroproposta','volumecomponente')
     #search_fields = ('numeroproposta',)
 
 admin.site.register(Empresa, EmpresaAdmin)
