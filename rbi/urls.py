@@ -12,6 +12,9 @@ from rbi.views import (
     Detailempresa_DetailView,
     AreasViewSet,
 )
+from rbi.views import (Index_view, Cadastroempresa_view, Cadastroarea_view, Cadastroequip_view,
+Cadastroproposta_view, Cadastrocomponente_view, Updatempresa_UpdateView, Detailempresa_DetailView,
+AreasViewSet ) 
 from accounts.views import register_view, login_view
 
 from rest_framework.routers import DefaultRouter
