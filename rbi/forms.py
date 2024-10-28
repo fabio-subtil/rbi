@@ -13,17 +13,43 @@ class cadastroempresaForm(forms.Form):
         Empresac.save()
         return Empresac
 
-class cadastroareaForm(forms.Form):
-    empresa = forms.ModelChoiceField(Empresa.objects.all())
-    nome = forms.CharField(max_length=30)
+class cadastroareaForm(forms.ModelForm):
+    class Meta:
+        model = Area
+        # Nesse caso foi usado uma lista com os campos do formulário, porém
+        # existe a possibilidade de usar "__all__" para já usar todos os
+        # campos para poupar tempo
 
-    def save(self):
-        area = Area(
-            empresa = self.cleaned_data['empresa'],
-            nome = self.cleaned_data['nome'],
-        )
-        area.save()
-        return area
+        fields = ["nome", "empresa"]
+        labels = {
+            'nome': 'Nome da área',
+            'empresa': 'Nome da Empresa'
+        }
+
+        # Aqui está um exemplo de widgets, que são mais propriedades que ajudam
+        # na criação do formulário
+
+        # widgets = {
+        #     "Areas": forms.CheckboxSelectMultiple(), quando existe um campo onde múltiplos
+        #                                              valores serão selecionados
+        #
+        #     "content": forms.Textarea(attrs={"rows": 10}), para um bloco de texto, onde rows
+        #                                                    é o número de linhas
+        #
+        #     "created_at": forms.DateInput(attrs={"type": 'date'}) usado para inputs de data
+
+
+
+        #empresa = forms.ModelChoiceField(Empresa.objects.all())
+        #nome = forms.CharField(max_length=30)
+
+        #def save(self):
+            #area = Area(
+            #    empresa = self.cleaned_data['empresa'],
+            #    nome = self.cleaned_data['nome'],
+            #)
+            #area.save()
+            #return area
   
 class cadastroequipForm(forms.Form):
     area = forms.ModelChoiceField(Area.objects.all())

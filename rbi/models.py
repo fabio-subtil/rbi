@@ -14,7 +14,7 @@ class Empresa(models.Model):
         return super().save()
 
 class Area(models.Model):
-    nome = models.CharField(max_length=30, blank=True, null=True)
+    nome = models.CharField(max_length=30, blank=False, null=False)
     empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE, related_name='areas')
     slug = models.SlugField(blank=True, null=True)
 

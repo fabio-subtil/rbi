@@ -1,8 +1,17 @@
 from django.shortcuts import render, redirect
-from rbi.models import Empresa
+from rbi.models import Empresa, Area
 from rbi.forms import cadastroempresaForm, cadastroareaForm, cadastroequipForm, cadastrocomponenteForm, cadastropropostaForm
+from rbi.serializers import AreaSerializer
+from rest_framework import viewsets
 from django.views import View
 from django.views.generic import  UpdateView, DeleteView, DetailView
+
+
+class AreasViewSet(viewsets.ModelViewSet):
+    queryset = Area.objects.all()
+    serializer_class = AreaSerializer
+
+
 
 class Index_view(View):
    def get(self, request):
@@ -42,13 +51,16 @@ class deletempresa_deleteView(DeleteView):
 class Cadastroarea_view(View):
    def get(self, request):
       cadastroarea_form = cadastroareaForm()
-      return render (request, 'cadastroarea.html', {'cadastroarea_form': cadastroarea_form})
+      context = {'form': cadastroarea_form}
+      return render (request, 'cadastroarea.html', {'cadastroarea_form': context})
    def post(self, request):
       cadastroarea_form = cadastroareaForm(request.POST, request.FILES)
       if cadastroarea_form.is_valid():
-         cadastroarea_form.save()
+         Area.objects.create(**cadastroarea_form.cleaned_data)
+         context = {'form': cadastroarea_form}
+         #cadastroarea_form.save()
          return redirect("index")
-      return render (request, 'cadastroarea.html', {'cadastroarea_form': cadastroarea_form})
+      return render (request, 'cadastroarea.html', context)
 
 class Cadastroequip_view(View):
    def get(self, request):

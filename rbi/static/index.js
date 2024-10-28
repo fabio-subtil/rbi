@@ -44,6 +44,9 @@ for (i = 0; i < toggler.length; i++) {
   });
 }
 
+// Cálculo S4 - Perda de espessura
+// Lendo os valores dos input´s
+
 function calcular() {
     var num1 = Number(document.getElementById("espemed").value);
     var num2 = Number(document.getElementById("txcormetal").value);
@@ -78,202 +81,186 @@ function calcular() {
     const isChecked5 = num26.checked;
     var num27 = (document.getElementById("tempmax").value);
     
-          
-    var elemResult = document.getElementById("resultado");
-    var elemResult2 = document.getElementById("resultado2");
-    var elemResult3 = document.getElementById("resultado3");
-    var elemResult4 = document.getElementById("resultado4");
-    var elemResult5 = document.getElementById("resultado5");
-    var elemResult6 = document.getElementById("resultado6");
-    var elemResult7 = document.getElementById("resultado7");
-    var elemResult8 = document.getElementById("resultado8");
-    var elemResult9 = document.getElementById("resultado9");
-    var elemResult10 = document.getElementById("resultado10");
-    var elemResult11 = document.getElementById("resultado11");
-    var elemResult12 = document.getElementById("resultado12");
-    var elemResult13 = document.getElementById("resultado13");
-    var elemResult14 = document.getElementById("resultado14");
-    var elemResult15 = document.getElementById("resultado15");
-    var elemResult16 = document.getElementById("resultado16");
-    var elemResult17 = document.getElementById("resultado17");
-    var elemResult18 = document.getElementById("resultado18");
-    var elemResult19 = document.getElementById("resultado19");
-    var elemResult20 = document.getElementById("resultado20");
-    var elemResult21 = document.getElementById("resultado21");
-    var elemResult22 = document.getElementById("resultado22");
-    var elemResult23 = document.getElementById("resultado23");
-    var elemResult24 = document.getElementById("resultado24");
-    var elemResult25 = document.getElementById("resultado25");
-    var elemResult26 = document.getElementById("resultado26");
-    var elemResult27 = document.getElementById("resultado27");
-    var elemResult28 = document.getElementById("resultado28");
-    var elemResult29 = document.getElementById("resultado29");
-    var elemResult30 = document.getElementById("resultado30");
-    var elemResult31 = document.getElementById("resultado31");
-    var elemResult32 = document.getElementById("resultado32");
-    var elemResult33 = document.getElementById("resultado33");
-    var elemResult34 = document.getElementById("resultado34");
-    var elemResult35 = document.getElementById("resultado35");
-    var elemResult36 = document.getElementById("resultado36");
-    var elemResult37 = document.getElementById("resultado37");
-    var elemResult38 = document.getElementById("resultado38");
-    var elemResult39 = document.getElementById("resultado39");
-    var elemResult40 = document.getElementById("resultado40");
-    var elemResult41 = document.getElementById("resultado41");
-    var elemResult42 = document.getElementById("resultado42");
-    var elemResult43 = document.getElementById("resultado43");
-    var elemResult44 = document.getElementById("resultado44");
-    var elemResult45 = document.getElementById("resultado45");
-    var elemResult46 = document.getElementById("resultado46");
-    var elemResult47 = document.getElementById("resultado46");
+   
+// Cálculo S4 - Perda de espessura
+//Devolvendo os resultados para o HTML
 
-    
-    // Cálculo S4 - Perda de espessura
+    var s41 = document.getElementById("s41");
+    var s42 = document.getElementById("s42");
+    var s43 = document.getElementById("s43");
+    var s44 = document.getElementById("s44");
+    var s45 = document.getElementById("s45");
+    var s46 = document.getElementById("s46");
+    var s47 = document.getElementById("s47");
+    var s48 = document.getElementById("s48");
+    var s49 = document.getElementById("s49");
+    var s410 = document.getElementById("s410");
+    var s411 = document.getElementById("s411");
+    var s412 = document.getElementById("s412");
+    var s413 = document.getElementById("s413");
+    var s414 = document.getElementById("s414");
+    var s415 = document.getElementById("s415");
+    var s416 = document.getElementById("s416");
+    var s417 = document.getElementById("s417");
+    var s418 = document.getElementById("s418");
+    var s419 = document.getElementById("s419");
+    var s420 = document.getElementById("s420");
+    var s421 = document.getElementById("s421");
+    var s422 = document.getElementById("s422");
+    var s423 = document.getElementById("s423");
+    var s424 = document.getElementById("s424");
+    var s425 = document.getElementById("s425");
+    var s426 = document.getElementById("s426");
+    var s427 = document.getElementById("s427");
+    var s428 = document.getElementById("s428");
+    var s429 = document.getElementById("s429");
+    var s430 = document.getElementById("s430");
+   
 
-      if (elemResult.textContent === undefined) {
-         elemResult.textContent = "Art = (1-(tmin-C*age)/(tmin+CA) = " + Number(1-(num1-num2*num3)/(num1+num4)).toFixed(4);
-         var resultado = (1-(num1-num2*num3)/(num1+num4));
+      if (s41.textContent === undefined) {
+         s41.textContent = "Art = (1-(tmin-C*age)/(tmin+CA) = " + Number(1-(num1-num2*num3)/(num1+num4)).toFixed(4);
+         var s41 = (1-(num1-num2*num3)/(num1+num4));
          
       }
       else { // IE
-         elemResult.innerText = "Art = (1-(tmin-C*age)/(tmin+CA) =" + Number(1-(num1-num2*num3)/(num1+num4)).toFixed(4);
-         var resultado = (1-(num1-num2*num3)/(num1+num4));
+         s41.innerText = "Art = (1-(tmin-C*age)/(tmin+CA) =" + Number(1-(num1-num2*num3)/(num1+num4)).toFixed(4);
+         var s41 = (1-(num1-num2*num3)/(num1+num4));
       }
-      if (elemResult2.textContent === undefined) {
-         elemResult2.textContent = "Art = (Cr,bm*agetk)/trdi) = " + Number(1-(num1-num2*num3)/(num1+num4)).toFixed(4);
-         var resultado2 = (1-(num1-num2*num3)/(num1+num4));
-      }
-      else { // IE
-         elemResult2.innerText = "Art = (Cr,bm*agetk)/trdi) =" + Number((num2*num3)/num1).toFixed(4);
-         var resultado2 = (1-(num1-num2*num3)/(num1+num4));
-      }
-      if (elemResult3.textContent === undefined) {
-         elemResult3.textContent = "Art = (Cr,cm*agetk)/trdi) = " + Number(1-(num1-num2*num3)/(num1+num4)).toFixed(4);
-         var resultado3 = (1-(num1-num2*num3)/(num1+num4));
+      if (s42.textContent === undefined) {
+         s42.textContent = "Art = (Cr,bm*agetk)/trdi) = " + Number(1-(num1-num2*num3)/(num1+num4)).toFixed(4);
+         var s42 = (1-(num1-num2*num3)/(num1+num4));
       }
       else { // IE
-         elemResult3.innerText = "Art = (Cr,cm*agetk)/trdi) =" + Number((num5*num3)/num1).toFixed(4);
+         s42.innerText = "Art = (Cr,bm*agetk)/trdi) =" + Number((num2*num3)/num1).toFixed(4);
+         var s42 = (1-(num1-num2*num3)/(num1+num4));
       }
-      if (elemResult4.textContent === undefined) {
-         elemResult4.textContent = "Art = (Cr,cm*agetk+Crbm*agetk-agerc))/trdi) = " + Number((num5*num3)/num1).toFixed(4);
-      }
-      else { // IE
-         elemResult4.innerText = "Art = (Cr,cm*agetk+Crbm*agetk-agerc))/trdi) =" + Number((num5*num3+num2*num3)/num1).toFixed(4);
-      }
-      if (elemResult5.textContent === undefined) {
-         elemResult5.textContent = "5= " + Number((num5*num3)/num1).toFixed(4);
+      if (s43.textContent === undefined) {
+         s43.textContent = "Art = (Cr,cm*agetk)/trdi) = " + Number(1-(num1-num2*num3)/(num1+num4)).toFixed(4);
+         var s43 = (1-(num1-num2*num3)/(num1+num4));
       }
       else { // IE
-         elemResult5.innerText = "5_1 = (Cr,cm*agetk+Crbm*agetk-agerc))/trdi) =" + Number((num5*num3+num2*num3)/num1).toFixed(4);
+         s43.innerText = "Art = (Cr,cm*agetk)/trdi) =" + Number((num5*num3)/num1).toFixed(4);
       }
-      if (elemResult6.textContent === undefined) {
-         elemResult6.textContent = "((TS+YS)/2*E*1,1)) = " + Number(((num7+num6)*num8*1.1)/2).toFixed(4);
-      }
-      else { // IE
-         elemResult6.innerText = "((TS+YS)/2*E*1,1)) =" + Number(((num7+num6)*num8*1.1)/2).toFixed(2);
-      }
-      if (elemResult7.textContent === undefined) {
-         elemResult7.textContent = "S*E*MAX(tmin,tc)/(FSThin*trdi) " + Number(num9*num8*Math.max(num1,num10)/((((num7+num6)*num8*1.1)/2)*num1)).toFixed(4);
+      if (s44.textContent === undefined) {
+         s44.textContent = "Art = (Cr,cm*agetk+Crbm*agetk-agerc))/trdi) = " + Number((num5*num3)/num1).toFixed(4);
       }
       else { // IE
-         elemResult7.innerText = "S*E*MAX(tmin,tc)/(FSThin*trdi) =" + Number(num9*num8*Math.max(num1,num10)/((((num7+num6)*num8*1.1)/2)*num1)).toFixed(4);
+         s44.innerText = "Art = (Cr,cm*agetk+Crbm*agetk-agerc))/trdi) =" + Number((num5*num3+num2*num3)/num1).toFixed(4);
       }
-      if (elemResult8.textContent === undefined) { 
+      if (s45.textContent === undefined) {
+         s45.textContent = "5= " + Number((num5*num3)/num1).toFixed(4);
+      }
+      else { // IE
+         s45.innerText = "5_1 = (Cr,cm*agetk+Crbm*agetk-agerc))/trdi) =" + Number((num5*num3+num2*num3)/num1).toFixed(4);
+      }
+      if (s46.textContent === undefined) {
+         s46.textContent = "((TS+YS)/2*E*1,1)) = " + Number(((num7+num6)*num8*1.1)/2).toFixed(4);
+      }
+      else { // IE
+         s46.innerText = "((TS+YS)/2*E*1,1)) =" + Number(((num7+num6)*num8*1.1)/2).toFixed(2);
+      }
+      if (s47.textContent === undefined) {
+         s47.textContent = "S*E*MAX(tmin,tc)/(FSThin*trdi) " + Number(num9*num8*Math.max(num1,num10)/((((num7+num6)*num8*1.1)/2)*num1)).toFixed(4);
+      }
+      else { // IE
+         s47.innerText = "S*E*MAX(tmin,tc)/(FSThin*trdi) =" + Number(num9*num8*Math.max(num1,num10)/((((num7+num6)*num8*1.1)/2)*num1)).toFixed(4);
+      }
+      if (s48.textContent === undefined) { 
          
-         elemResult8.textContent = "alpha =" + JSON.parse(tab46);
+         s48.textContent = "alpha =" + JSON.parse(tab46);
 
       }
       else { // IE
-         elemResult8.innerText = "alpha =" + Number(2).toFixed(2);
+         s48.innerText = "alpha =" + Number(2).toFixed(2);
       }
-      if (elemResult9.textContent === undefined) {
-         elemResult9.textContent = "9 P*D/(alpha*FS*trdi) =" + Number((num11*num12/1000)/(2*(((num7+num6)*num8*1.1)/2)*num1)).toFixed(4);
-         var resultado9 = ((num11*num12/1000)/(2*(((num7+num6)*num8*1.1)/2)*num1)).toFixed(4);
-      }
-      else { // IE
-         elemResult9.innerText = "9.1 P*D/(alpha*FS*trdi) =" + Number((num11*num12/1000)/(2*(((num7+num6)*num8*1.1)/2)*num1)).toFixed(4);
-         var resultado9 = ((num11*num12/1000)/(2*(((num7+num6)*num8*1.1)/2)*num1)).toFixed(4);
-      }
-      if (elemResult10.textContent === undefined) {
-         elemResult10.textContent = + Number((0.5*0.9**0)*(0.7**1)*(0.5**0)*(0.4**0)).toFixed(4);
-         var resultado10 = ((0.5*0.9**0)*(0.7**1)*(0.5**0)*(0.4**0));
+      if (s49.textContent === undefined) {
+         s49.textContent = "9 P*D/(alpha*FS*trdi) =" + Number((num11*num12/1000)/(2*(((num7+num6)*num8*1.1)/2)*num1)).toFixed(4);
+         var s49 = ((num11*num12/1000)/(2*(((num7+num6)*num8*1.1)/2)*num1)).toFixed(4);
       }
       else { // IE
-         elemResult10.innerText = + Number((0.5*0.9**0)*(0.7**1)*(0.5**0)*(0.4**0)).toFixed(4);
-         var resultado10 = ((0.5*0.9**0)*(0.7**1)*(0.5**0)*(0.4**0));
+         s49.innerText = "9.1 P*D/(alpha*FS*trdi) =" + Number((num11*num12/1000)/(2*(((num7+num6)*num8*1.1)/2)*num1)).toFixed(4);
+         var s49 = ((num11*num12/1000)/(2*(((num7+num6)*num8*1.1)/2)*num1)).toFixed(4);
       }
-      if (elemResult11.textContent === undefined) {
-         elemResult11.textContent = "11 =" + Number((0.3*0.09**0)*(0.2**1)*(0.3**0)*(0.33**0)).toFixed(4);
-         var resultado11 = ((0.3*0.09**0)*(0.2**1)*(0.3**0)*(0.33**0));
-      }
-      else { // IE
-         elemResult11.innerText = "11_1 =" + Number((0.3*0.09**0)*(0.2**1)*(0.3**0)*(0.33**0)).toFixed(4);
-         var resultado11 = ((0.3*0.09**0)*(0.2**1)*(0.3**0)*(0.33**0));
-      }
-      if (elemResult12.textContent === undefined) {
-         elemResult12.textContent = "12 =" + Number((0.2*0.01**0)*(0.1**1)*(0.2**0)*(0.27**0)).toFixed(4);
-         var resultado12 = ((0.2*0.01**0)*(0.1**1)*(0.2**0)*(0.27**0));
+      if (s410.textContent === undefined) {
+         s410.textContent = + Number((0.5*0.9**0)*(0.7**1)*(0.5**0)*(0.4**0)).toFixed(4);
+         var s410 = ((0.5*0.9**0)*(0.7**1)*(0.5**0)*(0.4**0));
       }
       else { // IE
-         elemResult12.innerText = "12_1 =" + Number((0.2*0.01**0)*(0.1**1)*(0.2**0)*(0.27**0)).toFixed(4);
-         var resultado12 = ((0.2*0.01**0)*(0.1**1)*(0.2**0)*(0.27**0));
+         s410.innerText = + Number((0.5*0.9**0)*(0.7**1)*(0.5**0)*(0.4**0)).toFixed(4);
+         var s410 = ((0.5*0.9**0)*(0.7**1)*(0.5**0)*(0.4**0));
       }
-      if (elemResult13.textContent === undefined) {
-         elemResult13.textContent = "13 =" + Number((resultado10/(resultado10+resultado11+resultado12))).toFixed(4);
-         var resultado13 = ((resultado10/(resultado10+resultado11+resultado12)));
-      }
-      else { // IE
-         elemResult13.innerText = "13_1 =" + Number((resultado10/(resultado10+resultado11+resultado12))).toFixed(4);
-         var resultado13 = ((resultado10/(resultado10+resultado11+resultado12)));
-      }
-      if (elemResult14.textContent === undefined) {
-         elemResult14.textContent = "14 =" + Number((resultado11/(resultado10+resultado11+resultado12))).toFixed(4);
-         var resultado14 = ((resultado11/(resultado10+resultado11+resultado12)));
+      if (s411.textContent === undefined) {
+         s411.textContent = "11 =" + Number((0.3*0.09**0)*(0.2**1)*(0.3**0)*(0.33**0)).toFixed(4);
+         var s411 = ((0.3*0.09**0)*(0.2**1)*(0.3**0)*(0.33**0));
       }
       else { // IE
-         elemResult14.innerText = "14_1 =" + Number((resultado11/(resultado10+resultado11+resultado12))).toFixed(4);
-         var resultado14 = ((resultado11/(resultado10+resultado11+resultado12)));
+         s411.innerText = "11_1 =" + Number((0.3*0.09**0)*(0.2**1)*(0.3**0)*(0.33**0)).toFixed(4);
+         var s411 = ((0.3*0.09**0)*(0.2**1)*(0.3**0)*(0.33**0));
       }
-      if (elemResult15.textContent === undefined) {
-         elemResult15.textContent = "15 =" + Number((resultado12/(resultado10+resultado11+resultado12))).toFixed(4);
-         var resultado15 = ((resultado12/(resultado10+resultado11+resultado12)));
-      }
-      else { // IE
-         elemResult15.innerText = "15_1 =" + Number((resultado12/(resultado10+resultado11+resultado12))).toFixed(4);
-         var resultado15 = ((resultado12/(resultado10+resultado11+resultado12)));
-      }
-      if (elemResult16.textContent === undefined) {
-         elemResult16.textContent = "16 =" + Number(((1-1*resultado2)-0.2967)/(((1**2*resultado2**2*0.2**2+(1-1*resultado2)**2*0.2**2+0.2967**2*0.05**2))**(1/2))).toFixed(4);
-         var resultado16 = (((1-1*resultado2)-0.2967)/(((1**2*resultado2**2*0.2**2+(1-1*resultado2)**2*0.2**2+0.2967**2*0.05**2))**(1/2)));
+      if (s412.textContent === undefined) {
+         s412.textContent = "12 =" + Number((0.2*0.01**0)*(0.1**1)*(0.2**0)*(0.27**0)).toFixed(4);
+         var s412 = ((0.2*0.01**0)*(0.1**1)*(0.2**0)*(0.27**0));
       }
       else { // IE
-         elemResult16.innerText = "16_1 =" + Number(((1-1*resultado2)-0.2967)/(((1**2*resultado2**2*0.2**2+(1-1*resultado2)**2*0.2**2+0.2967**2*0.05**2))**(1/2))).toFixed(4);
-         var resultado16 = (((1-1*resultado2)-0.2967)/(((1**2*resultado2**2*0.2**2+(1-1*resultado2)**2*0.2**2+0.2967**2*0.05**2))**(1/2)));
+         s412.innerText = "12_1 =" + Number((0.2*0.01**0)*(0.1**1)*(0.2**0)*(0.27**0)).toFixed(4);
+         var s412 = ((0.2*0.01**0)*(0.1**1)*(0.2**0)*(0.27**0));
       }
-      if (elemResult17.textContent === undefined) {
-         elemResult17.textContent = "17 =" + Number(((1-2*resultado2)-0.2967)/(((2**2*resultado2**2*0.2**2+(1-2*resultado2)**2*0.2**2+0.2967**2*0.05**2))**(1/2))).toFixed(4);
-         var resultado17 = (((1-2*resultado2)-0.2967)/(((2**2*resultado2**2*0.2**2+(1-2*resultado2)**2*0.2**2+0.2967**2*0.05**2))**(1/2)));
-      }
-      else { // IE
-         elemResult17.innerText = "17_1=" + Number(((1-2*resultado2)-0.2967)/(((2**2*resultado2**2*0.2**2+(1-2*resultado2)**2*0.2**2+0.2967**2*0.05**2))**(1/2))).toFixed(4);
-         var resultado17 = (((1-2*resultado2)-0.2967)/(((2**2*resultado2**2*0.2**2+(1-2*resultado2)**2*0.2**2+0.2967**2*0.05**2))**(1/2)));
-      }
-      if (elemResult18.textContent === undefined) {
-         elemResult18.textContent = "18 =" + Number(((1-4*resultado2)-0.2967)/(((4**2*resultado2**2*0.2**2+(1-4*resultado2)**2*0.2**2+0.2967**2*0.05**2))**(1/2))).toFixed(4);
-         var resultado18 = (((1-4*resultado2)-0.2967)/(((4**2*resultado2**2*0.2**2+(1-4*resultado2)**2*0.2**2+0.2967**2*0.05**2))**(1/2)));
+      if (s413.textContent === undefined) {
+         s413.textContent = "13 =" + Number((s410/(s410+s411+s412))).toFixed(4);
+         var resultado13 = ((s410/(s410+s411+s412)));
       }
       else { // IE
-         elemResult18.innerText = "18_1 =" + Number(((1-4*resultado2)-0.2967)/(((4**2*resultado2**2*0.2**2+(1-4*resultado2)**2*0.2**2+0.2967**2*0.05**2))**(1/2))).toFixed(4);
-         var resultado18 = (((1-4*resultado2)-0.2967)/(((4**2*resultado2**2*0.2**2+(1-4*resultado2)**2*0.2**2+0.2967**2*0.05**2))**(1/2)));
+         s413.innerText = "13_1 =" + Number((s410/(s410+s411+s412))).toFixed(4);
+         var s413 = ((s410/(s410+s411+s412)));
+      }
+      if (s414.textContent === undefined) {
+         s414.textContent = "14 =" + Number((s411/(s410+s411+s412))).toFixed(4);
+         var s414 = ((resultado11/(s410+s411+s412)));
+      }
+      else { // IE
+         s414.innerText = "14_1 =" + Number((s411/(s410+s411+s412))).toFixed(4);
+         var s414 = ((s411/(s410+s411+s412)));
+      }
+      if (s415.textContent === undefined) {
+         s415.textContent = "15 =" + Number((s412/(s410+s411+s412))).toFixed(4);
+         var s415 = ((s412/(s410+s411+s412)));
+      }
+      else { // IE
+         s415.innerText = "15_1 =" + Number((s412/(s410+s411+s412))).toFixed(4);
+         var s415 = ((s412/(s410+s411+s412)));
+      }
+      if (s416.textContent === undefined) {
+         s416.textContent = "16 =" + Number(((1-1*s42)-0.2967)/(((1**2*s42**2*0.2**2+(1-1*s42)**2*0.2**2+0.2967**2*0.05**2))**(1/2))).toFixed(4);
+         var s416 = (((1-1*s42)-0.2967)/(((1**2*s42**2*0.2**2+(1-1*s42)**2*0.2**2+0.2967**2*0.05**2))**(1/2)));
+      }
+      else { // IE
+         s416.innerText = "16_1 =" + Number(((1-1*s42)-0.2967)/(((1**2*s42**2*0.2**2+(1-1*s42)**2*0.2**2+0.2967**2*0.05**2))**(1/2))).toFixed(4);
+         var s416 = (((1-1*s42)-0.2967)/(((1**2*s42**2*0.2**2+(1-1*s42)**2*0.2**2+0.2967**2*0.05**2))**(1/2)));
+      }
+      if (s417.textContent === undefined) {
+         s417.textContent = "17 =" + Number(((1-2*s42)-0.2967)/(((2**2*s42**2*0.2**2+(1-2*s42)**2*0.2**2+0.2967**2*0.05**2))**(1/2))).toFixed(4);
+         var s417 = (((1-2*s42)-0.2967)/(((2**2*s42**2*0.2**2+(1-2*s42)**2*0.2**2+0.2967**2*0.05**2))**(1/2)));
+      }
+      else { // IE
+         s417.innerText = "17_1=" + Number(((1-2*s42)-0.2967)/(((2**2*s42**2*0.2**2+(1-2*s42)**2*0.2**2+0.2967**2*0.05**2))**(1/2))).toFixed(4);
+         var s417 = (((1-2*s42)-0.2967)/(((2**2*s42**2*0.2**2+(1-2*s42)**2*0.2**2+0.2967**2*0.05**2))**(1/2)));
+      }
+      if (s418.textContent === undefined) {
+         s418.textContent = "18 =" + Number(((1-4*s42)-0.2967)/(((4**2*s42**2*0.2**2+(1-4*s42)**2*0.2**2+0.2967**2*0.05**2))**(1/2))).toFixed(4);
+         var s418 = (((1-4*s42)-0.2967)/(((4**2*s42**2*0.2**2+(1-4*s42)**2*0.2**2+0.2967**2*0.05**2))**(1/2)));
+      }
+      else { // IE
+         s418.innerText = "18_1 =" + Number(((1-4*s42)-0.2967)/(((4**2*s42**2*0.2**2+(1-4*s42)**2*0.2**2+0.2967**2*0.05**2))**(1/2))).toFixed(4);
+         var s418 = (((1-4*s42)-0.2967)/(((4**2*s42**2*0.2**2+(1-4*s42)**2*0.2**2+0.2967**2*0.05**2))**(1/2)));
       }
 
-      if (elemResult19.textContent === undefined) {
-         elemResult19.textContent = "19 =" + Number(((resultado13*0.004307)+(resultado14*0.246041)+(resultado15*0.979964))/0.000156).toFixed(4);
-         var resultado19 = + Number(((resultado13*0.04307)+(resultado14*0.246041)+(resultado15*0.979964))/0.000156).toFixed(4);
+      if (s419.textContent === undefined) {
+         s419.textContent = "19 =" + Number(((s413*0.004307)+(s414*0.246041)+(s415*0.979964))/0.000156).toFixed(4);
+         var s419 = + Number(((s413*0.04307)+(s414*0.246041)+(s415*0.979964))/0.000156).toFixed(4);
       }
       else { // IE
-         elemResult19.innerText = "19_1 =" + Number(((resultado13*0.004307)+(resultado14*0.246041)+(resultado15*0.979964))/0.000156).toFixed(4);
-         var resultado19 = (((resultado13*0.004307)+(resultado14*0.246041)+(resultado15*0.979964))/0.000156).toFixed(4);
+         s419.innerText = "19_1 =" + Number(((s413*0.004307)+(s414*0.246041)+(s415*0.979964))/0.000156).toFixed(4);
+         var s419 = (((s413*0.004307)+(s414*0.246041)+(s415*0.979964))/0.000156).toFixed(4);
       }  
       if (num13=="Sim"){
          var fip = 3;
@@ -322,60 +309,60 @@ function calcular() {
       else {
          var fom = 10;
       }
-      if (elemResult20.textContent === undefined) {
-         elemResult20.textContent = "FIP =" + fip;
+      if (s420.textContent === undefined) {
+         s420.textContent = "FIP =" + fip;
       }
       else { // IE
-         elemResult20.innerText = "FIP =" + fip;
+         s420.innerText = "FIP =" + fip;
       }
-      if (elemResult21.textContent === undefined) {
-         elemResult21.textContent = "FDL =" + fdl;
-      }
-      else { // IE
-         elemResult21.innerText = "FDL =" + fdl;
-      }
-      if (elemResult22.textContent === undefined) {
-         elemResult22.textContent = "FWD =" + fwd;
+      if (s421.textContent === undefined) {
+         s421.textContent = "FDL =" + fdl;
       }
       else { // IE
-         elemResult22.innerText = "FWD =" + fwd;
+         s421.innerText = "FDL =" + fdl;
       }
-      if (elemResult23.textContent === undefined) {
-         elemResult23.textContent = "FAM =" + fam;
-      }
-      else { // IE
-         elemResult23.innerText = "FAM =" + fam;
-      }
-      if (elemResult24.textContent === undefined) {
-         elemResult24.textContent = "FSM =" + fsm;
+      if (s422.textContent === undefined) {
+         s422.textContent = "FWD =" + fwd;
       }
       else { // IE
-         elemResult24.innerText = "FSM ="+ fsm;
+         s422.innerText = "FWD =" + fwd;
       }
-      if (elemResult25.textContent === undefined) {
-         elemResult25.textContent = "FOM (Tabela 4.8)= Falta calcular" + 1;
-      }
-      else { // IE
-         elemResult25.innerText = "FOM (Tabela 4.8)= Falta calcular =" + 1;
-      }
-      if (elemResult26.textContent === undefined) {
-         elemResult26.textContent = "DANO 26 = (FIP*FDL*FWD*FAM*FSM*FOM*DTHINfb) = " + (resultado19*fip*fdl*fwd*fam*fsm*fom) ;
+      if (s423.textContent === undefined) {
+         s423.textContent = "FAM =" + fam;
       }
       else { // IE
-         elemResult26.innerText = "DANO 26.1 = (FIP*FDL*FWD*FAM*FSM*FOM*DTHINfb) =" + (resultado19*fip*fdl*fwd*fam*fsm*fom);
+         s423.innerText = "FAM =" + fam;
+      }
+      if (s424.textContent === undefined) {
+         s424.textContent = "FSM =" + fsm;
+      }
+      else { // IE
+         s424.innerText = "FSM ="+ fsm;
+      }
+      if (s425.textContent === undefined) {
+         s425.textContent = "FOM (Tabela 4.8)= Falta calcular" + 1;
+      }
+      else { // IE
+         s425.innerText = "FOM (Tabela 4.8)= Falta calcular =" + 1;
+      }
+      if (s426.textContent === undefined) {
+         s426.textContent = "DANO 26 = (FIP*FDL*FWD*FAM*FSM*FOM*DTHINfb) = " + (resultado19*fip*fdl*fwd*fam*fsm*fom) ;
+      }
+      else { // IE
+         s426.innerText = "DANO 26.1 = (FIP*FDL*FWD*FAM*FSM*FOM*DTHINfb) =" + (resultado19*fip*fdl*fwd*fam*fsm*fom);
       }
 
-      if (elemResult27.textContent === undefined) {
-         elemResult27.textContent = "Probabilidade =" + Number(0.0000306*fip*fdl*fwd*fam*fsm*fom*resultado19).toFixed(4);
+      if (s427.textContent === undefined) {
+         s427.textContent = "Probabilidade =" + Number(0.0000306*fip*fdl*fwd*fam*fsm*fom*resultado19).toFixed(4);
       }
       else { // IE
-         elemResult27.innerText = "Probabilidade =" + Number(0.0000306*fip*fdl*fwd*fam*fsm*fom*resultado19).toFixed(4);
+         s427.innerText = "Probabilidade =" + Number(0.0000306*fip*fdl*fwd*fam*fsm*fom*resultado19).toFixed(4);
       }
 
       // Cálculo da distribuição normal
       // myval será o valor a ser calculado
       // Caso 1
-      var myval1 =-resultado17;
+      var myval1 =-s417;
       var mean1 = 0;
       var SD1 = 1;
       var answer1 = centile(mean1, SD1, myval1);
@@ -413,8 +400,34 @@ function calcular() {
       }
 
 
+ // Cálculo S5 - SCC Caustic Cracking
+ //Devolvendo os resultados para o HTML
 
 
+      var elemResult31 = document.getElementById("resultado31");
+      var elemResult32 = document.getElementById("resultado32");
+      var elemResult33 = document.getElementById("resultado33");
+      var elemResult34 = document.getElementById("resultado34");
+      var elemResult35 = document.getElementById("resultado35");
+      var elemResult36 = document.getElementById("resultado36");
+      var elemResult37 = document.getElementById("resultado37");
+      var elemResult38 = document.getElementById("resultado38");
+      
+
+
+// Cálculo S6 - SCC Caustic Cracking
+ //Devolvendo os resultados para o HTML
+      var elemResult39 = document.getElementById("resultado39");
+      var elemResult40 = document.getElementById("resultado40");
+      var elemResult41 = document.getElementById("resultado41");
+      var elemResult42 = document.getElementById("resultado42");
+      var elemResult43 = document.getElementById("resultado43");
+      var elemResult44 = document.getElementById("resultado44");
+      var elemResult45 = document.getElementById("resultado45");
+      var elemResult46 = document.getElementById("resultado46");
+
+
+     
 
    // Cálculo S6 - SCC Caustic Cracking
    if (isChecked1){
