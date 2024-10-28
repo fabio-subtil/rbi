@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from rbi.views import (Index_view, Cadastroempresa_view, Cadastroarea_view, Cadastroequip_view,
-Cadastroproposta_view, Cadastrocomponente_view, Updatempresa_UpdateView, Detailempresa_DetailView, area_form_view,
+Cadastroproposta_view, Cadastrocomponente_view, Updatempresa_UpdateView, Detailempresa_DetailView,
 AreasViewSet ) 
 from accounts.views import register_view, login_view
 

@@ -6,6 +6,7 @@ from rest_framework import routers, serializers, viewsets
 from django.conf import settings
 from rbi.views import Index_view, Cadastroempresa_view, Cadastroarea_view, Cadastroequip_view, Cadastroproposta_view, Cadastrocomponente_view, Updatempresa_UpdateView, Detailempresa_DetailView
 from accounts.views import register_view, login_view
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),

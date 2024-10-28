@@ -58,7 +58,7 @@ class Cadastroarea_view(View):
       if cadastroarea_form.is_valid():
          Area.objects.create(**cadastroarea_form.cleaned_data)
          context = {'form': cadastroarea_form}
-         #cadastroarea_form.save()
+         cadastroarea_form.save()
          return redirect("index")
       return render (request, 'cadastroarea.html', context)
 
