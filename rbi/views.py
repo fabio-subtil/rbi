@@ -14,8 +14,9 @@ class AreasViewSet(viewsets.ModelViewSet):
 
 class Index_view(View):
    def get(self, request):
+      form = cadastroareaForm()
       empresas = Empresa.objects.all()
-      context = {"rbi": empresas}
+      context = {"rbi": empresas, 'form': form, }
       return render(request, "index.html", context=context)
 
 
@@ -62,21 +63,18 @@ class deletempresa_deleteView(DeleteView):
 
 
 class Cadastroarea_view(View):
-    def get(self, request):
-        cadastroarea_form = cadastroareaForm()
-        context = {'form': cadastroarea_form}
-        return render(request, 'cadastroarea.html', {
-         'cadastroarea_form': context
-         })
-
-    def post(self, request):
-        cadastroarea_form = cadastroareaForm(request.POST, request.FILES)
-        if cadastroarea_form.is_valid():
-            Area.objects.create(**cadastroarea_form.cleaned_data)
-            context = {'form': cadastroarea_form}
-            cadastroarea_form.save()
-            return redirect("index")
-        return render(request, 'cadastroarea.html', context)
+   def get(self, request):
+      cadastroarea_form = cadastroareaForm()
+      context = {'form': cadastroarea_form}
+      return render (request, 'cadastroarea.html', context)
+   def post(self, request):
+      cadastroarea_form = cadastroareaForm(request.POST, request.FILES)
+      if cadastroarea_form.is_valid():
+         Area.objects.create(**cadastroarea_form.cleaned_data)
+         context = {'form': cadastroarea_form}
+         cadastroarea_form.save()
+         return redirect("index")
+      return render (request, 'cadastroarea.html', context)
 
 
 class Cadastroequip_view(View):

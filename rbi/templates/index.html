@@ -79,10 +79,11 @@
                     <div class="modal-body">                         
                         <form action="/cadastroempresa/" method="post">
                             {% csrf_token %}
+                                                       
                             <label for="Nome">Nome da empresa: </label>
                             <input id="nome" type="text" name="nome" value="{{ current_nome }}">
                             <input type="submit" value="OK">
-                        </form>                                                                                   
+                        </form>                                                                                
                     </div>
                 </div>                                
             </div>
@@ -94,9 +95,11 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="modal-body">                         
-                        <form method="post" action="cadastroarea" enctype="multipart/form-data" height="100px" width="auto">
+                        <form method="post" action="/cadastroarea/" enctype="multipart/form-data" height="100px" width="auto">
                             {% csrf_token %}
-                            {{ form.as_p }}
+                            <table>
+                                {{form.as_table}}
+                            </table>
                             <button type="submit" class="btn btn-primary">Salvar</button>
                         </form>                                                                                   
                     </div>
@@ -308,7 +311,9 @@
                                 </div>          
                             </div>
                             
-                                
+                               
+                            
+                            
                                 
                                                                                                                        
 
@@ -461,7 +466,7 @@
                                             <label for="monitora" class="col-sm-5 col-form-label">Tem monitoramento on-line</label>
                                             <div class="col-sm-5">
                                                 <select class="form-control form-control-2g" id="monitora">
-                                                    <option>Nenhum1</option>
+                                                    <option>nenhum</option>
                                                     <option>Amina</option>
                                                     <option>H2S</option>
                                                     <option>Hf</option>
@@ -672,7 +677,7 @@
                                                 <div class="form-group row pt-0" style="height: 25px";>
                                                     <label for="linning" class="col-sm-3 col-form-label">Explosão</label>
                                                     <div class="col-sm-3">
-                                                        <select class="form-control form-control-2g" id="linning">
+                                                        <select class="form-control form-control-2g" id="explosão">
                                                             <option>EEEEE</option>
                                                             <option>FFFFF</option>
                                                         </select>
@@ -689,7 +694,7 @@
                                                 <div class="form-group row pt-0" style="height: 25px";>
                                                     <label for="linning" class="col-sm-3 col-form-label">Toxico</label>
                                                     <div class="col-sm-3">
-                                                        <select class="form-control form-control-2g" id="linning">
+                                                        <select class="form-control form-control-2g" id="toxico">
                                                             <option>ZZZZZ</option>
                                                             <option>WWWWW</option>
                                                         </select>
@@ -706,7 +711,7 @@
                                                 <div class="form-group row pt-0" style="height: 25px";>
                                                     <label for="linning" class="col-sm-3 col-form-label">Outros</label>
                                                     <div class="col-sm-3">
-                                                        <select class="form-control form-control-2g" id="linning">
+                                                        <select class="form-control form-control-2g" id="outros">
                                                             <option>XXXX</option>
                                                             <option>YYYY</option>
                                                         </select>
@@ -816,7 +821,8 @@
                                                 <span><b>Cálculo da razão de tensão (SR) = MAX(SR1,SR12)</b></span><br>
                                                 <span>SR1</span><br>
                                                 <span id="s47"></span><br>
-                                                <span>Alpha</span>s4resultado8"></span><br>
+                                                <span>Alpha</span><br>
+                                                <span id="s48"></span><br>
                                                 <span>SR12</span><br>
                                                 <span id="s49"></span><br>
                                                 <span><b>Cálculo dos fatores de efetividade de inspeção ITHIN1, ITHIN2, ITHIN3</b></span><br>
@@ -864,7 +870,7 @@
                                                 <div class="form-group row pt-0" style="height: 25px";>
                                                     <label for="linning" class="col-sm-3 col-form-label">Linnig (Orgânico/Inorgânico)</label>
                                                     <div class="col-sm-3">
-                                                        <select class="form-control form-control-2g" id="linning">
+                                                        <select class="form-control form-control-2g" id="linning" onblur="calcular();">
                                                             <option>Orgânico</option>
                                                             <option>Inorgânico</option>
                                                         </select>
@@ -873,7 +879,7 @@
                                             <div class="form-group row pt-0" style="height: 25px";>
                                                 <label for="tipolinning" class="col-sm-3 col-form-label">Tipo de Linnig </label>
                                                 <div class="col-sm-3">
-                                                    <select class="form-control form-control-2g" id="tipolinning">
+                                                    <select class="form-control form-control-2g" id="tipolinning" onblur="calcular();">
                                                         <option>Strip Lined Alloy</option>
                                                         <option>Castable refractory</option>
                                                         <option>Cast. refractory sev. Conditions</option>
@@ -886,7 +892,7 @@
                                             <div class="form-group row pt-0" style="height: 25px";>
                                                 <label for="quallinning" class="col-sm-3 col-form-label">Qualidade do Linnig, se orgânico</label>
                                                 <div class="col-sm-3">
-                                                    <select class="form-control form-control-2g" id="quallinning">
+                                                    <select class="form-control form-control-2g" id="quallinning" onblur="calcular();">
                                                         <option>Pobre</option>
                                                         <option>Médio</option>
                                                         <option>Bom</option>
@@ -896,18 +902,17 @@
 
                                             <div class="col-7 p-3">                                                             
                                                 <span><b>Cálculo:</b></span><br>   
-                                                <span id="resultado31"></span><br>
-                                                <span id="resultado32"></span><br>
-                                                <span id="resultado33"></span><br>
-                                                <span id="resultado34"></span><br>
-                                                <span id="resultado35"></span><br>
-                                                <span id="resultado36"></span><br>
-                                                <span id="resultado37"></span><br>
-                                                <span id="resultado38"></span><br>
-                                                <span>Suceptibilidade =</span><br>
-                                                <span>Índice de severidade =</span><br>
-                                                <span>Valor de dano base por trincamento (D_ELINfb) =</span><br>
-                                                <span><b>Dano (D_ELINf) = D_ELINfb * (Max (age,1,0)^1,1) =</b></span><br>   
+                                                <span id="s531"></span><br>
+                                                <span id="s532"></span><br>
+                                                <span id="s533"></span><br>
+                                                <span id="s534"></span><br>
+                                                <span id="s535"></span><br>
+
+                                                
+                                                <span><b>Dano (D_ELINb) =</b><span id="s536"></span><br>
+                                                <span><b>FLC =</b><span id="s537"></span><br>
+                                                <span><b>FOM =</b><span id="s538"></span><br>
+                                                <span><b>Dano (D_ELINf) = D_ELINfb * FLC * FOM = </b><span id="s539"></span><br>
                                                                                                                 
                                             </div>
 
@@ -966,15 +971,15 @@
 
                                                             <div class="col-7 p-3">                                                             
                                                                 <span><b>Cálculo:</b></span><br>   
-                                                                <span id="resultado39"></span><br>
-                                                                <span id="resultado40"></span><br>
-                                                                <span id="resultado41"></span><br>
-                                                                <span id="resultado42"></span><br>
-                                                                <span id="resultado43"></span><br>
-                                                                <span id="resultado44"></span><br>
-                                                                <span id="resultado45"></span><br>
-                                                                <span id="resultado46"></span><br>
-                                                                <span id="resultado47"></span><br>
+                                                                <span id="s639"></span><br>
+                                                                <span id="s640"></span><br>
+                                                                <span id="s641"></span><br>
+                                                                <span id="s642"></span><br>
+                                                                <span id="s643"></span><br>
+                                                                <span id="s644"></span><br>
+                                                                <span id="s645"></span><br>
+                                                                <span id="s646"></span><br>
+                                                                <span id="s647"></span><br>
                                                                 <span>Suceptibilidade =</span><br>
                                                                 <span>Índice de severidade =</span><br>
                                                                 <span>Valor de dano base por trincamento (Dcausticfb) =</span><br>
@@ -1014,14 +1019,14 @@
                                                             <div class="col-7 p-3">                                                             
                                                                 <span><b>Cálculo:</b></span><br>   
                                                                 
-                                                                <span id="resultado48"></span><br>
-                                                                <span id="resultado49"></span><br>
-                                                                <span id="resultado50"></span><br>
-                                                                <span id="resultado51"></span><br>
-                                                                <span id="resultado52"></span><br>
-                                                                <span id="resultado53"></span><br>
-                                                                <span id="resultado54"></span><br>
-                                                                <span id="resultado55"></span><br>
+                                                                <span id="s748"></span><br>
+                                                                <span id="s749"></span><br>
+                                                                <span id="s750"></span><br>
+                                                                <span id="s751"></span><br>
+                                                                <span id="s752"></span><br>
+                                                                <span id="s753"></span><br>
+                                                                <span id="s754"></span><br>
+                                                                <span id="s755"></span><br>
                                                                 <span>Suceptibilidade =</span><br>
                                                                 <span>Índice de severidade =</span><br>
                                                                 <span>Valor de dano base por trincamento (Daminefb) =</span><br>
@@ -1416,8 +1421,8 @@
                                                         <div class="form-group row" style="height: 25px";>
                                                             <label for="inputEmail3" class="col-sm-5 col-form-label">Tem monitoramento on-line</label>
                                                             <div class="col-sm-3">
-                                                                <select class="form-control form-control-2g">
-                                                                    <option>Nenhum</option>
+                                                                <select class="form-control form-control-2g" id="temmonitora">
+                                                                    <option>nenhum</option>
                                                                     <option>Amina</option>
                                                                     <option>H2S</option>
                                                                     <option>Hf</option>
