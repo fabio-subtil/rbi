@@ -11,6 +11,7 @@ from rbi.views import (
     Updatempresa_UpdateView,
     Detailempresa_DetailView,
     AreasViewSet,
+    empresa_details,
 )
 from rbi.views import (Index_view, Cadastroempresa_view, Cadastroarea_view, Cadastroequip_view,
 Cadastroproposta_view, Cadastrocomponente_view, Updatempresa_UpdateView, Detailempresa_DetailView,
@@ -30,6 +31,7 @@ urlpatterns = [
     path('cadastroempresa/', Cadastroempresa_view.as_view(), name='cadastroempresa'),
     path('cadastroempresa/<int:pk>detailempresa/', Detailempresa_DetailView.as_view(), name='detailempresa'),
     path('cadastroempresa/<int:pk>updatempresa/', Updatempresa_UpdateView.as_view(), name='updatempresa'),
+    path('empresa/<str:nome>', empresa_details, name='empresa-info'),
     path('cadastroarea/', Cadastroarea_view.as_view(), name='cadastroarea'),
     path('cadastroequip/', Cadastroequip_view.as_view(), name='cadastroequip'),
     path('cadastrocomponente/', Cadastrocomponente_view.as_view(), name='cadastrocomponente'),

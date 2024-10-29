@@ -20,51 +20,63 @@ class Index_view(View):
 
 
 class Cadastroempresa_view(View):
-   def get(self, request):
-      cadastroempresa_form = cadastroempresaForm()
-      return render (request, 'cadastroempresa.html', {'cadastroempresa_form': cadastroempresa_form})
+    def get(self, request):
+        cadastroempresa_form = cadastroempresaForm()
+        return render(request, 'cadastroempresa.html', {
+         'cadastroempresa_form': cadastroempresa_form
+         })
 
-   def post(self, request):
-      cadastroempresa_form = cadastroempresaForm(request.POST, request.FILES)
-      if cadastroempresa_form.is_valid():
-         cadastroempresa_form.save()
-         return redirect("index")
-      return render(request, 'cadastroempresa.html', {'cadastroempresa_form': cadastroempresa_form})
+    def post(self, request):
+        cadastroempresa_form = cadastroempresaForm(request.POST, request.FILES)
+        if cadastroempresa_form.is_valid():
+            cadastroempresa_form.save()
+            return redirect("index")
+        return render(request, 'cadastroempresa.html', {
+         'cadastroempresa_form': cadastroempresa_form
+         })
 
 
 class Detailempresa_DetailView(DetailView):
-   model = Empresa
-   form_class = cadastroempresaForm
-   template_name = 'detailempresa.html'
+    model = Empresa
+    form_class = cadastroempresaForm
+    template_name = 'detailempresa.html'
+
+
+def empresa_details(request, nome):
+    context = {"empresa": Empresa.objects.get(nome=nome)}
+    return render(request, 'detalhes-empresa.html', context)
 
 
 class Updatempresa_UpdateView(UpdateView):
-   model = Empresa
-   form_class = cadastroempresaForm
-   template_name = 'updatempresa.html'
-   success_url = '/rbi/'
+    model = Empresa
+    form_class = cadastroempresaForm
+    template_name = 'updatempresa.html'
+    success_url = '/rbi/'
 
 
 class deletempresa_deleteView(DeleteView):
-   model = Empresa
-   form_class = cadastroempresaForm
-   template_name = 'deletempresa.html'
-   success_url = '/rbi/'
+    model = Empresa
+    form_class = cadastroempresaForm
+    template_name = 'deletempresa.html'
+    success_url = '/rbi/'
 
 
 class Cadastroarea_view(View):
-   def get(self, request):
-      cadastroarea_form = cadastroareaForm()
-      context = {'form': cadastroarea_form}
-      return render (request, 'cadastroarea.html', {'cadastroarea_form': context})
-   def post(self, request):
-      cadastroarea_form = cadastroareaForm(request.POST, request.FILES)
-      if cadastroarea_form.is_valid():
-         Area.objects.create(**cadastroarea_form.cleaned_data)
-         context = {'form': cadastroarea_form}
-         cadastroarea_form.save()
-         return redirect("index")
-      return render (request, 'cadastroarea.html', context)
+    def get(self, request):
+        cadastroarea_form = cadastroareaForm()
+        context = {'form': cadastroarea_form}
+        return render(request, 'cadastroarea.html', {
+         'cadastroarea_form': context
+         })
+
+    def post(self, request):
+        cadastroarea_form = cadastroareaForm(request.POST, request.FILES)
+        if cadastroarea_form.is_valid():
+            Area.objects.create(**cadastroarea_form.cleaned_data)
+            context = {'form': cadastroarea_form}
+            cadastroarea_form.save()
+            return redirect("index")
+        return render(request, 'cadastroarea.html', context)
 
 
 class Cadastroequip_view(View):

@@ -149,6 +149,7 @@
                                         </a>
                                         <ul class="list-group list-group-flush">
                                             <div class="collapse" id="collapse-{{empresa.id}}">
+                                                <li><a href="{% url 'empresa-info' empresa.nome %}">detalhes</a></li>
                                                 {% for area in empresa.areas.all %}
                                                     <li class="list-group-item" style="line-height: 0.8">
                                                         <a
