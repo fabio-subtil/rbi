@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from rbi.models import Empresa, Area, Tag, Proposta, Componente
+from rbi.models import Empresa, Area, Tag, Proposta, Componente, Abaequipamento
 
 class cadastroempresaForm(forms.Form):
     nome = forms.CharField(max_length=50)
@@ -37,8 +37,6 @@ class cadastroareaForm(forms.ModelForm):
         #                                                    é o número de linhas
         #
         #     "created_at": forms.DateInput(attrs={"type": 'date'}) usado para inputs de data
-
-
 
         #empresa = forms.ModelChoiceField(Empresa.objects.all())
         #nome = forms.CharField(max_length=30)
@@ -86,6 +84,18 @@ class cadastropropostaForm(forms.Form):
         )
         TAGP.save()
         return TAGP
+
+
+
+
+
+class abaequipamento(forms.ModelForm):
+    class Meta:
+        model = Abaequipamento
+        
+        fields = ["numeroproposta", "tipoequipamento" ,"nomequipamento","volumeequip","descricaoprocesso"]
+        
+        
     
 
     

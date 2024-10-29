@@ -14,8 +14,9 @@ class AreasViewSet(viewsets.ModelViewSet):
 
 class Index_view(View):
    def get(self, request):
+      form = cadastroareaForm()
       empresas = Empresa.objects.all()
-      context = {"rbi": empresas}
+      context = {"rbi": empresas, 'form': form, }
       return render(request, "index.html", context=context)
 
 
@@ -56,7 +57,7 @@ class Cadastroarea_view(View):
    def get(self, request):
       cadastroarea_form = cadastroareaForm()
       context = {'form': cadastroarea_form}
-      return render (request, 'cadastroarea.html', {'cadastroarea_form': context})
+      return render (request, 'cadastroarea.html', context)
    def post(self, request):
       cadastroarea_form = cadastroareaForm(request.POST, request.FILES)
       if cadastroarea_form.is_valid():

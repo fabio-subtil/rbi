@@ -67,21 +67,31 @@ function calcular() {
     var num17 = (document.getElementById("recalqapi653").value);    
     var num18 = (document.getElementById("monitora").value);
     const num19 = document.getElementById("temtrinca");
+
     const isChecked1 = num19.checked;
     const num20 = document.getElementById("pwht");
     const isChecked2 = num20.checked;
+
     var num21 = Number(document.getElementById("connaoh").value);
     var num22 = (document.getElementById("areacurva").value);
     const num23 = document.getElementById("contvapor");
+
     const isChecked3 = num23.checked;
     const num24 = document.getElementById("expamina");
     const isChecked4 = num24.checked;
+
     var num25 = (document.getElementById("meadipadeca").value);
+
     const num26 = document.getElementById("existtraco");
     const isChecked5 = num26.checked;
     var num27 = (document.getElementById("tempmax").value);
+
+    var num28 = (document.getElementById("linning").value);
+    var num29 = (document.getElementById("tipolinning").value);
+    var num30 = (document.getElementById("quallinning").value);
+    var num31 = (document.getElementById("temmonitora").value);
+
     
-   
 // Cálculo S4 - Perda de espessura
 //Devolvendo os resultados para o HTML
 
@@ -115,6 +125,7 @@ function calcular() {
     var s428 = document.getElementById("s428");
     var s429 = document.getElementById("s429");
     var s430 = document.getElementById("s430");
+    
    
 
       if (s41.textContent === undefined) {
@@ -167,14 +178,14 @@ function calcular() {
       }
       if (s48.textContent === undefined) { 
          
-         s48.textContent = "alpha =" + JSON.parse(tab46);
+         s48.textContent = "alpha =" + Number(2) ;
 
       }
       else { // IE
-         s48.innerText = "alpha =" + Number(2).toFixed(2);
+         s48.innerText = "alpha =" + Number(2);
       }
       if (s49.textContent === undefined) {
-         s49.textContent = "9 P*D/(alpha*FS*trdi) =" + Number((num11*num12/1000)/(2*(((num7+num6)*num8*1.1)/2)*num1)).toFixed(4);
+         s49.textContent = "9 P*D/(alpha*FS*trdi) ="+ Number((num11*num12/1000)/(2*(((num7+num6)*num8*1.1)/2)*num1)).toFixed(4);
          var s49 = ((num11*num12/1000)/(2*(((num7+num6)*num8*1.1)/2)*num1)).toFixed(4);
       }
       else { // IE
@@ -215,7 +226,7 @@ function calcular() {
       }
       if (s414.textContent === undefined) {
          s414.textContent = "14 =" + Number((s411/(s410+s411+s412))).toFixed(4);
-         var s414 = ((resultado11/(s410+s411+s412)));
+         var s414 = ((s411/(s410+s411+s412)));
       }
       else { // IE
          s414.innerText = "14_1 =" + Number((s411/(s410+s411+s412))).toFixed(4);
@@ -346,148 +357,197 @@ function calcular() {
          s425.innerText = "FOM (Tabela 4.8)= Falta calcular =" + 1;
       }
       if (s426.textContent === undefined) {
-         s426.textContent = "DANO 26 = (FIP*FDL*FWD*FAM*FSM*FOM*DTHINfb) = " + (resultado19*fip*fdl*fwd*fam*fsm*fom) ;
+         s426.textContent = "DANO 26 = (FIP*FDL*FWD*FAM*FSM*FOM*DTHINfb) = " + (s419*fip*fdl*fwd*fam*fsm*fom) ;
       }
       else { // IE
-         s426.innerText = "DANO 26.1 = (FIP*FDL*FWD*FAM*FSM*FOM*DTHINfb) =" + (resultado19*fip*fdl*fwd*fam*fsm*fom);
+         s426.innerText = "DANO 26.1 = (FIP*FDL*FWD*FAM*FSM*FOM*DTHINfb) =" + (s419*fip*fdl*fwd*fam*fsm*fom);
       }
 
       if (s427.textContent === undefined) {
-         s427.textContent = "Probabilidade =" + Number(0.0000306*fip*fdl*fwd*fam*fsm*fom*resultado19).toFixed(4);
+         s427.textContent = "Probabilidade =" + Number(0.0000306*fip*fdl*fwd*fam*fsm*fom*s419).toFixed(4);
       }
       else { // IE
-         s427.innerText = "Probabilidade =" + Number(0.0000306*fip*fdl*fwd*fam*fsm*fom*resultado19).toFixed(4);
+         s427.innerText = "Probabilidade =" + Number(0.0000306*fip*fdl*fwd*fam*fsm*fom*s419).toFixed(4);
       }
 
       // Cálculo da distribuição normal
       // myval será o valor a ser calculado
-      // Caso 1
-      var myval1 =-s417;
-      var mean1 = 0;
-      var SD1 = 1;
-      var answer1 = centile(mean1, SD1, myval1);
-      console.log(answer1)
-      function centile(mean1, SD1, val1)
-      {
-      z1 = (val1-mean1)/SD1;
-      ans1 = NORMSDIST1(z1);
-      return ans1;
+    
+      function calculo(w) {
+         var myval1 =-w;
+         var mean1 = 0;
+         var SD1 = 1;
+         var answer1 = centile(mean1, SD1, myval1);
+         console.log(answer1)
+         function centile(mean1, SD1, val1)
+         {
+         z1 = (val1-mean1)/SD1;
+         ans1 = NORMSDIST1(z1);
+         return ans1;
+         }
+         function erf(x1)
+         {
+         //A&S formula 7.1.26
+         var ans1 = 0;
+         var a11 = 0.254829592;
+         var a21 = -0.284496736;
+         var a31 = 1.421413741;
+         var a41 = -1.453152027;
+         var a51 = 1.061405429;
+         var p1 = 0.3275911;
+         x1 = Math.abs(x1);
+         var t1 = 1 / (1 + p1 * x1);
+         //Horner's method, takes O(n) operations for nth order polynomial
+         ans1 = 1 - ((((((a51 * t1 + a41) * t1) + a31) * t1 + a21) * t1) + a11) * t1 * Math.exp(-1 * x1 * x1);
+         return ans1; 
+         }
+         function NORMSDIST1(z1)
+         {
+         var ans1 = 0;
+         var sign1 = 1;
+         if (z1 < 0) sign1 = -1;
+         ans1 = 0.5 * (1.0 + sign1 * erf(Math.abs(z1)/Math.sqrt(2)));
+            s428.textContent = + Number(ans1);
+         }
       }
-      function erf(x1)
-      {
-      //A&S formula 7.1.26
-      var ans1 = 0;
-      var a11 = 0.254829592;
-      var a21 = -0.284496736;
-      var a31 = 1.421413741;
-      var a41 = -1.453152027;
-      var a51 = 1.061405429;
-      var p1 = 0.3275911;
-      x1 = Math.abs(x1);
-      var t1 = 1 / (1 + p1 * x1);
-      //Horner's method, takes O(n) operations for nth order polynomial
-      ans1 = 1 - ((((((a51 * t1 + a41) * t1) + a31) * t1 + a21) * t1) + a11) * t1 * Math.exp(-1 * x1 * x1);
-      return ans1; 
-      }
-      function NORMSDIST1(z1)
-      {
-      var ans1 = 0;
-      var sign1 = 1;
-      if (z1 < 0) sign1 = -1;
-      ans1 = 0.5 * (1.0 + sign1 * erf(Math.abs(z1)/Math.sqrt(2)));
-         elemResult28.textContent = + Number(ans1);
-         elemResult28.innerText = + Number(ans1);
-      }
+
+      calculo(s417) = s428.textContent;
+      calculo(s418) = s429.textContent;
+      calculo(s419) = s430.textContent;
+
+
 
 
  // Cálculo S5 - SCC Caustic Cracking
  //Devolvendo os resultados para o HTML
 
-
-      var elemResult31 = document.getElementById("resultado31");
-      var elemResult32 = document.getElementById("resultado32");
-      var elemResult33 = document.getElementById("resultado33");
-      var elemResult34 = document.getElementById("resultado34");
-      var elemResult35 = document.getElementById("resultado35");
-      var elemResult36 = document.getElementById("resultado36");
-      var elemResult37 = document.getElementById("resultado37");
-      var elemResult38 = document.getElementById("resultado38");
+      var s531 = document.getElementById("s531");
+      var s532 = document.getElementById("s532");
+      var s533 = document.getElementById("s533");
+      var s534 = document.getElementById("s534");
       
+     
+      
+      s531.textContent = "Foi informado que o linning é " + num28;
+      s532.textContent = "Foi informado que o tipo do linning é " + num29;
+      s533.textContent = "Foi informado que a qualiadde do linning é " + num30;
+      if (num31 === "nenhum"){
+         s534.textContent = "Foi informado que não há nenhum tipo de monitoramento";
+      }
+      else{      
+         s534.textContent = "Existe monitoramento de " + num31;
+      }
 
+
+      switch (num30) {
+         case "Pobre":
+            s537.textContent = + 10;
+            var flc = +10;
+            break
+         case "Médio":
+            s537.textContent = + 2;
+            var flc = +2;
+            break
+         case "Bom":
+            s537.textContent = + 1;
+            var flc = +1;
+            break
+      }
+      if ( num31 === "nenhum") {
+         s538.textContent = + 1;
+         var fom = +1;         
+      }
+      else {
+         s538.textContent = + 0.1;
+         var fom = +0.1;
+      }
+      s539.textContent = + num30*flc*fom;
+
+      
 
 // Cálculo S6 - SCC Caustic Cracking
  //Devolvendo os resultados para o HTML
-      var elemResult39 = document.getElementById("resultado39");
-      var elemResult40 = document.getElementById("resultado40");
-      var elemResult41 = document.getElementById("resultado41");
-      var elemResult42 = document.getElementById("resultado42");
-      var elemResult43 = document.getElementById("resultado43");
-      var elemResult44 = document.getElementById("resultado44");
-      var elemResult45 = document.getElementById("resultado45");
-      var elemResult46 = document.getElementById("resultado46");
+      var s639 = document.getElementById("s639");
+      var s640 = document.getElementById("s640");
+      var s641 = document.getElementById("s641");
+      var s642 = document.getElementById("s642");
+      var s643 = document.getElementById("s643");
+      var s644 = document.getElementById("s644");
+      var s645 = document.getElementById("s645");
+      var s646 = document.getElementById("s646");
+      var s647 = document.getElementById("s647");
 
-
-     
+       
 
    // Cálculo S6 - SCC Caustic Cracking
    if (isChecked1){
-      elemResult31.textContent = "Foi informado que existe trinca";
-      elemResult39.textContent = "Foi informado que existe trinca";
+      s631.textContent = "Foi informado que existe trinca";
+      s639.textContent = "Foi informado que existe trinca";
    }
    else {
-      elemResult31.textContent = "Foi informado que NÃO existe trinca";
-      elemResult39.textContent = "Foi informado que NÃO existe trinca";
+      s631.textContent = "Foi informado que NÃO existe trinca";
+      s639.textContent = "Foi informado que NÃO existe trinca";
    }
    if (isChecked2){
-      elemResult32.textContent = "O componente tem alívio de tensões (pwht)";
-      elemResult40.textContent = "O componente tem alívio de tensões (pwht)";
+      s632.textContent = "O componente tem alívio de tensões (pwht)";
+      s640.textContent = "O componente tem alívio de tensões (pwht)";
    }
    else {
-      elemResult32.textContent = "O componente não tem alívio de tensões (pwht)";
-      elemResult40.textContent = "O componente não tem alívio de tensões (pwht)";
+      s632.textContent = "O componente não tem alívio de tensões (pwht)";
+      s640.textContent = "O componente não tem alívio de tensões (pwht)";
    }
    if (num21>0){
-      elemResult33.textContent = "Sendo a Concentração de NaOH (%) =" + num21;
-      elemResult34.textContent = "Curva conforme figura 6.1M =" + num22;
+      s653.textContent = "Sendo a Concentração de NaOH (%) =" + num21;
+      s634.textContent = "Curva conforme figura 6.1M =" + num22;
    }
-   else {
-      elemResult33.textContent = "Não foi informado a presença de NaOH";
+   else {s633.textContent = "Não foi informado a presença de NaOH";
    }
    if (isChecked3){
-      elemResult35.textContent = "Componente com contato de vazamento de vapor";
+      s635.textContent = "Componente com contato de vazamento de vapor";
    }
    else {
-      elemResult35.textContent = "Componente não tem contato de vazamento de vapor";
+      s635.textContent = "Componente não tem contato de vazamento de vapor";
    }
 
-      elemResult36.textContent = "O tempo entre as inspeções (age) =" +num3;
-      elemResult37.textContent = "O número de inspeções =";
-      elemResult38.textContent = "Efetividade das inspeções considerada =";
+      s636.textContent = "O tempo entre as inspeções (age) =" +num3;
+      s637.textContent = "O número de inspeções =";
+      s638.textContent = "Efetividade das inspeções considerada =";
 
 
       
    // Cálculo S7 - SCC Amina
+
+   //Devolvendo os resultados para o HTML
+   var s739 = document.getElementById("s739");
+   var s740 = document.getElementById("s740");
+   var s741 = document.getElementById("s741");
+   var s742 = document.getElementById("s742");
+   var s743 = document.getElementById("s743");
+   var s744 = document.getElementById("s744");
+   var s745 = document.getElementById("s745");
+   var s746 = document.getElementById("s746");
+   var s747 = document.getElementById("s747");
    
    if (isChecked4){
-      elemResult41.textContent = "Componente exposto a Amina magra";
-      elemResult42.textContent = "Exposição a " + num25;
+      s741.textContent = "Componente exposto a Amina magra";
+      s742.textContent = "Exposição a " + num25;
    }
    else {
-      elemResult41.textContent = "Componente não exposto a Amina magra";
-      elemResult42.textContent =" ";
+      s741.textContent = "Componente não exposto a Amina magra";
+      s742.textContent =" ";
    }
   
    if (isChecked5){
-      elemResult43.textContent = "Existe traço de vapor";
+      s643.textContent = "Existe traço de vapor";
    }
    else {
-      elemResult43.textContent = "NÃO existe traço de vapor";
+      s643.textContent = "NÃO existe traço de vapor";
    }
 
-      elemResult44.textContent = "Temperatura máxima considerada =";
-      elemResult45.textContent = "O tempo entre as inspeções (age) =";
-      elemResult46.textContent = "O número de inspeções =";
-      elemResult47.textContent = "Efetividade das inspeções considerada =";
+      s644.textContent = "Temperatura máxima considerada =";
+      s645.textContent = "O tempo entre as inspeções (age) =";
+      s646.textContent = "O número de inspeções =";
+      s647.textContent = "Efetividade das inspeções considerada =";
 
   
 }
