@@ -14,7 +14,7 @@ class Empresa(models.Model):
         return super().save()
 
 class Area(models.Model):
-    nome = models.CharField(max_length=30, blank=False, null=False)
+    nome = models.CharField(max_length=30, blank=True, null=True)
     empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE, related_name='areas')
     slug = models.SlugField(blank=True, null=True)
 
@@ -67,17 +67,21 @@ class Proposta(models.Model):
         if not self.slug:
             self.slug = slugify(self.numeroproposta)
         return super().save()
-    
+
+
 class Abaequipamento(models.Model):
-    numeroproposta = models.ForeignKey(Proposta, on_delete=models.CASCADE, related_name='tag_componente1', blank=True, null=True)
-    tipoequipamento = models.CharField(max_length=20, blank=True, null=True)
     nomequipamento = models.CharField(max_length=20, blank=True, null=True)
+    tipoequipamento = models.CharField(max_length=20, blank=True, null=True)
     volumeequip = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     descricaoprocesso = models.CharField(max_length=20, blank=True, null=True)
-    
+    numeroproposta = models.ForeignKey(Proposta, on_delete=models.CASCADE, related_name='tag_componente1', blank=True, null=True)
+    data_comissionamento = models.DateField(default="2024-01-01", blank=False, null=False)
+    slug = models.SlugField(blank=True, null=True)
+    tag = models.ForeignKey(Tag, on_delete=models.CASCADE, blank=True, null=True, related_name="equipamentos")
+
     def __str__(self):
         return self.tipoequipamento
-    
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.tipoequipamento)

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from rbi.models import Empresa, Area
-from rbi.forms import cadastroempresaForm, cadastroareaForm, cadastroequipForm, cadastrocomponenteForm, cadastropropostaForm
+from rbi.models import Empresa, Area, Abaequipamento, Tag
+from rbi.forms import cadastroempresaForm, cadastroareaForm, cadastroequipForm, cadastrocomponenteForm, cadastropropostaForm, abaequipamento
 from rbi.serializers import AreaSerializer
 from rest_framework import viewsets
 from django.views import View
@@ -13,11 +13,22 @@ class AreasViewSet(viewsets.ModelViewSet):
 
 
 class Index_view(View):
-   def get(self, request):
-      form = cadastroareaForm()
-      empresas = Empresa.objects.all()
-      context = {"rbi": empresas, 'form': form, }
-      return render(request, "index.html", context=context)
+    def get(self, request, name=None):
+        form = cadastroareaForm()
+        equipamento_form = abaequipamento()
+        empresas = Empresa.objects.all()
+        context = {"rbi": empresas, 'form': form, "equip_form": equipamento_form}
+        return render(request, "index.html", context=context)
+
+    def post(self, request):
+        form = cadastroareaForm(request.POST)
+        equipamento_form = abaequipamento(request.POST)
+        empresas = Empresa.objects.all()
+        context = {"rbi": empresas, 'form': form, "equip_form": equipamento_form}
+        if equipamento_form.is_valid():
+            equipamento_form.save()
+            return redirect('index')
+        return render(request, "index.html", context=context)
 
 
 class Cadastroempresa_view(View):
@@ -109,3 +120,50 @@ class Cadastroproposta_view(View):
       if cadastroproposta_form.is_valid():
         cadastroproposta_form.save()
         return redirect("index")
+
+
+def update_equipamento(form):
+    """Atualiza um equipamento existente com os dados do formulário."""
+    equipamento = form.instance  # Pega a instância atual do formulário
+    for field, value in form.cleaned_data.items():
+        setattr(equipamento, field, value)  # Atualiza cada campo com o valor do formulário
+    equipamento.save()  # Salva a instância atualizada
+
+
+def all_forms_view(request, empresa_id, area_id, tag_id):
+    empresas = Empresa.objects.all()
+    equipamento_form = abaequipamento()
+    form = cadastroareaForm()
+    tag = Tag.objects.get(id=tag_id)
+    equipamento = None
+    try:
+        equipamento = Abaequipamento.objects.get(tag_id=tag_id)
+        equipamento_form = abaequipamento(instance=equipamento)
+    except Abaequipamento.DoesNotExist:
+        pass
+    if request.method == "POST":
+        if equipamento:
+            # Se o equipamento existe, passamos a instância para o formulário
+            equipamento_form = abaequipamento(request.POST, instance=equipamento)
+            if equipamento_form.is_valid():
+                update_equipamento(equipamento_form)  # Chama a função para atualizar o equipamento
+                return redirect('index')
+        else:
+            equipamento_form = abaequipamento(request.POST)
+            form = cadastroareaForm(request.POST)
+            if equipamento_form.is_valid():
+                equipamento = equipamento_form.save(commit=False)  # Não salva ainda
+                equipamento.tag_id = tag_id  # Define a tag usando o ID da URL
+                equipamento.save()  # Agora salva o equipamento
+                equipamento_form.save()
+                return redirect('index')
+    context = {
+            "rbi": empresas,
+            "form": form,
+            "equip_form": equipamento_form,
+            "empresa_id": empresa_id,
+            "area_id": area_id,
+            "tag_id": tag_id
+        }
+    return render(request, "todos-forms.html", context=context)
+   
