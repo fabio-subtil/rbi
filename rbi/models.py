@@ -95,7 +95,6 @@ class Abacomponente(models.Model):
     angulocone = models.DecimalField(max_digits=10, decimal_places=2)
     componentesoldado = models.BooleanField()
 
-    
     def __str__(self):
         return self.tipocomponenteapi
     
@@ -116,7 +115,6 @@ class Abacondicoesoperacionais(models.Model):
     deadleg = models.CharField(max_length=20, blank=True, null=True)
     tipoinspecaodeadleg = models.CharField(max_length=20, blank=True, null=True)
 
-    
     def __str__(self):
         return self.pressãoprojeto
     
@@ -159,7 +157,6 @@ class Abavolumemassa(models.Model):
     numeroproposta = models.ForeignKey(Proposta, on_delete=models.CASCADE, related_name='tag_componente5', blank=True, null=True)
     
     volumecomponente = models.DecimalField(max_digits=10, decimal_places=2)
-    
     
     def __str__(self):
         return self.volumeequip
