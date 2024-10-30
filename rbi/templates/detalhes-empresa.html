@@ -1,0 +1,13 @@
+{%extends "base.html" %}
+
+{% block rbi %}
+
+<div class="card">
+    <h2>{{empresa.nome}}</h2>
+    <h3>areas:</h3>
+    {% for area in empresa.areas.all %}
+        <div>{{area.nome}}</div>
+    {% endfor %}
+</div>
+
+{% endblock %}

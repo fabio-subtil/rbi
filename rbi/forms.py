@@ -86,18 +86,34 @@ class cadastropropostaForm(forms.Form):
         return TAGP
 
 
-
+TIPOS_EQUIPAMENTOS = [
+    ('compressor', 'Compressor'),
+    ('trocador_de_calor', 'Trocador de calor'),
+    ('tubulação', 'Tubulação'),
+    ('bomba', 'Bomba'),
+    ('tanque_api_650_fundo', 'Tanque API 650 (fundo)'),
+    ('tanque_api_650_costado', 'Tanque API 650 (costado)'),
+    ('vaso_de_pressao', 'Vaso de pressão'),
+]
 
 
 class abaequipamento(forms.ModelForm):
+    tipoequipamento = forms.ChoiceField(
+        choices=TIPOS_EQUIPAMENTOS,  # Array de opções para o select
+        widget=forms.Select           # Renderiza como um select
+    )
+
     class Meta:
         model = Abaequipamento
-        
-        fields = ["numeroproposta", "tipoequipamento" ,"nomequipamento","volumeequip","descricaoprocesso"]
-        
-        
-    
-
-    
-    
-        
+        fields = ["nomequipamento", "tipoequipamento", "volumeequip", "descricaoprocesso", "numeroproposta", "data_comissionamento"]
+        labels = {
+            "nomequipamento": 'Nome do Equipamento',
+            "tipoequipamento": 'Tipo do Equipamento',
+            "volumeequip": 'Volume do Equipamento',
+            "descricaoprocesso": 'Descrição do Equipamento',
+            "numeroproposta": 'Número da Proposta',
+            "data_comissionamento": 'Data de Comissionamento',
+        }
+        widgets = {
+            "data_comissionamento": forms.DateInput(attrs={"type": 'date'}),
+        }
