@@ -407,26 +407,27 @@ function calcular() {
          var sign1 = 1;
          if (z1 < 0) sign1 = -1;
          ans1 = 0.5 * (1.0 + sign1 * erf(Math.abs(z1)/Math.sqrt(2)));
-            s428.textContent = + Number(ans1);
+         s428.textContent = + Number(ans1);   
+         
          }
+
       }
+      //calculo(s417) = s428.textContent;
 
-      calculo(s417) = s428.textContent;
-      calculo(s418) = s429.textContent;
-      calculo(s419) = s430.textContent;
-
-
-
+      
+      
 
  // Cálculo S5 - SCC Caustic Cracking
- //Devolvendo os resultados para o HTML
+ // Devolvendo os resultados para o HTML
+ // Tabela
+
+ // Tabela
+
 
       var s531 = document.getElementById("s531");
       var s532 = document.getElementById("s532");
       var s533 = document.getElementById("s533");
-      var s534 = document.getElementById("s534");
-      
-     
+      var s534 = document.getElementById("s534");   
       
       s531.textContent = "Foi informado que o linning é " + num28;
       s532.textContent = "Foi informado que o tipo do linning é " + num29;
@@ -437,7 +438,6 @@ function calcular() {
       else{      
          s534.textContent = "Existe monitoramento de " + num31;
       }
-
 
       switch (num30) {
          case "Pobre":
